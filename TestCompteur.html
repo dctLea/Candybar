@@ -7,43 +7,89 @@
 </head>
 <body>
 
-<h1>Compteurs HTML</h1>
+<h1>Page avec les compteurs</h1>
 
-<div>
-  <p>Compteur 1 : <span id="compteur1">10</span></p>
-  <button onclick="incrementerCompteur('compteur1')">Incrémenter</button>
-  <input type="number" id="valeur1" min="0" placeholder="Entrez un nombre">
-  <button onclick="incrementerCompteurManuel('compteur1')">Incrémenter Manuellement</button>
+<!-- Div pour afficher les commandes -->
+<div id="commandes">
+  <h2>Votre commande:</h2>
 </div>
 
-<div>
-  <p>Compteur 2 : <span id="compteur2">10</span></p>
-  <button onclick="incrementerCompteur('compteur2')">Incrémenter</button>
-  <input type="number" id="valeur2" min="0" placeholder="Entrez un nombre">
-  <button onclick="incrementerCompteurManuel('compteur2')">Incrémenter Manuellement</button>
-</div>
+<!-- Inclure le script -->
+<script>
+// Définir des objets pour chaque bonbon avec leur image et stock initial
+var bonbons = [
+  {
+    nom: "Bonbon Venteux",
+    image: "../Images/bonbon_berlingo.jpg",
+    stockInitial: 10,
+    commandes: 0 // Ajouter une propriété pour compter les commandes
+  },
+  {
+    nom: "Bonbon Doux",
+    image: "../Images/bonbon_berlingo.jpg",
+    stockInitial: 15,
+    commandes: 0
+  },
+  {
+    nom: "Bonbon Acidulé",
+    image: "../Images/bonbon_berlingo.jpg",
+    stockInitial: 8,
+    commandes: 0
+  }
+];
 
-<div>
-  <p>Compteur 3 : <span id="compteur3">10</span></p>
-  <button onclick="incrementerCompteur('compteur3')">Incrémenter</button>
-  <input type="number" id="valeur3" min="0" placeholder="Entrez un nombre">
-  <button onclick="incrementerCompteurManuel('compteur3')">Incrémenter Manuellement</button>
-</div>
-
-// Fonction pour incrémenter le compteur en cliquant sur le bouton
-function incrementerCompteur(id) {
-  var compteurElement = document.getElementById(id);
-  var compteurValeur = parseInt(compteurElement.innerText);
-  compteurElement.innerText = compteurValeur + 1;
+// Fonction pour créer les compteurs pour chaque bonbon
+function creerCompteurs() {
+  bonbons.forEach(function(bonbon, index) {
+    var compteursHTML = `
+      <div>
+        <p><img src="${bonbon.image}" alt="${bonbon.nom}" width="100" height="100"></p>
+        <p>Stock = <span id="compteur${index}">${bonbon.stockInitial}</span></p>
+        <button onclick="decrementerCompteur('compteur${index}')">Commander</button>
+        <input type="number" id="commande${index}" min="0" placeholder="Quantité">
+        <button onclick="decrementerCompteurManuel('compteur${index}', 'commande${index}')">Commander Manuellement</button>
+      </div>
+    `;
+    document.body.innerHTML += compteursHTML;
+  });
 }
 
-// Fonction pour incrémenter le compteur manuellement
-function incrementerCompteurManuel(id) {
+// Fonction pour décrémenter le compteur en cliquant sur le bouton "Commander"
+function decrementerCompteur(id) {
   var compteurElement = document.getElementById(id);
-  var valeurInput = document.getElementById('valeur' + id.substr(-1)).value;
   var compteurValeur = parseInt(compteurElement.innerText);
-  compteurElement.innerText = compteurValeur + parseInt(valeurInput);
+  compteurElement.innerText = compteurValeur - 1;
+
+  // Mettre à jour le nombre de commandes pour ce bonbon
+  var bonbonIndex = parseInt(id.match(/\d+/)[0]);
+  bonbons[bonbonIndex].commandes++;
+  mettreAJourCommandes();
 }
+
+// Fonction pour décrémenter le compteur manuellement
+function decrementerCompteurManuel(id, commandeId) {
+  var compteurElement = document.getElementById(id);
+  var commandeInput = document.getElementById(commandeId).value;
+  var compteurValeur = parseInt(compteurElement.innerText);
+  compteurElement.innerText = compteurValeur - parseInt(commandeInput);
+
+  // Mettre à jour le nombre de commandes pour ce bonbon
+  var bonbonIndex = parseInt(id.match(/\d+/)[0]);
+  bonbons[bonbonIndex].commandes += parseInt(commandeInput);
+  mettreAJourCommandes();
+}
+
+// Fonction pour mettre à jour l'affichage des commandes
+function mettreAJourCommandes() {
+  var commandesHTML = "<h2>Votre commande:</h2>";
+  bonbons.forEach(function(bonbon, index) {
+    commandesHTML += `<p>${bonbon.nom}: ${bonbon.commandes}</p>`;
+  });
+  document.getElementById("commandes").innerHTML = commandesHTML;
+}
+
+// Appeler la fonction pour créer les compteurs
+creerCompteurs();
 </script>
 
 </body>
