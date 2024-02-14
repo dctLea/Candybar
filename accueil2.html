@@ -5,22 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Candy Bar - Accueil</title>
     <!-- Ajout du lien CSS pour Materialize -->
-    <link rel="stylesheet" href="../materialize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+        header {
+            background-color: #f57c00;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffa726;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            background-color: #ff7043;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .banner {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .banner img {
+            width: 80%;
+            max-width: 600px;
+        }
+        .welcome-text {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .welcome-text h1 {
+            font-size: 36px;
+            color: #f57c00;
+        }
+        .welcome-text p {
+            font-size: 18px;
+            color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div id="header" class="navbar-fixed">
-            <nav class="orange darken-2">
-                <div class="nav-wrapper">
-                    <h1 class="brand-logo center">Candy Bar</h1>
-                    <a href="#" id="nav-mobile" class="left hide-on-med-and-down"></div>>Accueil</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="#">Nos produits</a></li>
-                        <li><a href="#">À propos de nous</a></li>
-                        <li><a href="#">Contactez-nous</a></li>
-                    </ul>
-                </div>
-            </nav>
+        <h1 class="brand-logo">Candy Bar</h1>
+        <p>Le paradis des gourmands</p>
+    <!-- Intégration de Materialize pour la barre de navigation -->
+    <nav>
+        <div class="nav-wrapper orange darken-2">
+            <ul id="nav-mobile" class="center">
+                <li><a href="#">Accueil</a>
+                <li><a href="#">Nos produits</a></li>
+                <li><a href="#">À propos de nous</a></li>
+                <li><a href="#">Contactez-nous</a></li>
+            </ul>
         </div>
+    </nav>
+
     </header>
 
+    <div class="container">
+        <div class="banner">
+            <img src="candy_bar_banner.jpg" alt="Candy Bar">
+        </div>
+        <div class="welcome-text">
+            <h1>Bienvenue au Candy Bar</h1>
+            <p>Découvrez notre sélection exquise de bonbons, chocolats, et sucreries pour satisfaire vos envies de gourmandises. Que ce soit pour une occasion spéciale ou simplement pour vous faire plaisir, notre Candy Bar a tout ce qu'il vous faut!</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Candy Bar. Tous droits réservés.</p>
+    </footer>
+    <!-- Ajout du script JavaScript pour Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
