@@ -69,9 +69,7 @@ function decrementerCompteur(id) {
 // Fonction pour décrémenter le compteur manuellement
 function decrementerCompteurManuel(id, commandeId) {
   var compteurElement = document.getElementById(id);
-  var commandeInput = document.getElementById(commandeId).value;
   var compteurValeur = parseInt(compteurElement.innerText);
-  compteurElement.innerText = compteurValeur - parseInt(commandeInput);
 
   // Mettre à jour le nombre de commandes pour ce bonbon
   var bonbonIndex = parseInt(id.match(/\d+/)[0]);

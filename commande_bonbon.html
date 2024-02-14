@@ -43,10 +43,10 @@
         </div>
         
         <div class="step1_commande">
-            <h1>Commande</h1>
+            <h1>Commande [nom bonbon]</h1>
         </div>
         <div class="Choix_quantite">
-            <p> Quel quantité de [nom bonbon] veux-tu ?</p>
+            <p> Quel quantité de [nom bonbon] voulez-vous ?</p>
             <input type="number" id="Quantite_Bonbon" min="0" placeholder="Entrez la quantité voulu">
             
             <p id="Quantite_Dispo"> Quantité disponible : </p>
@@ -67,6 +67,49 @@
               //Quantite_Dispo_Info.innerText = 
             });
         </script>
+    </div>
+    <style>
+        .container_choix{
+            width : 100%;
+        }
+
+        .retour_arriere, .confirmer {
+            display: inline-block;
+            
+            width: 45%;
+            padding: 14px 20px;
+            margin: 8px 2%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .confirmer {
+            background-color: #5cd135;
+            color: white;
+            text-align: center;
+        }
+        .retour_arriere {
+            background-color: #ea1818;
+            color: white;
+        }
+        .confirmer:hover {
+            background-color: #4cb828;
+        }
+        .retour_arriere:hover {
+            background-color: #cf1515;
+        }
+            
+        
+    </style>
+    <div class="container_choix">
+        <div class="retour_arriere">
+            <input type="reset" value="←">
+        </div>
+        <div class="confirmer">        
+            <input type="submit" value="Confirmer">
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Candy Bar. Tous droits réservés.</p>
