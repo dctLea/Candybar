@@ -5,12 +5,16 @@ body {
     padding: 0;
     background-color: #f8f8f8;
     position: relative;
-    margin-bottom: 100px; 
+    margin-top: 250px;
 }
 header {
     color: #fff;
-    padding-top: 1px;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 header h1 {
     font-weight: bold;
@@ -37,7 +41,6 @@ footer {
     color: #fff;
     padding: 5px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    margin-bottom: 0px;
     width: 100%;
 }
