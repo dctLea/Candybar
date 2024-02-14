@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/materialize.css">
+    <link rel="stylesheet" href="../Style/Candy_Bar.css">
+    <title>Candy Bar - Accueil</title>
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Candy Bar</h1>
+        <p>Le paradis des gourmands</p>
+    </header>
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">À propos de nous</a>
+    </nav>
+    <div class="container">
+        <div class="banner">
+            <img src="Images/CandyShop_nobg.jpg" alt="Candy Bar">
+        </div>
+        <div class="step1_commande">
+            <h1>Commande</h1>
+        </div>
+        <div class="Choix_quantite">
+            <p> Quel quantité de [nom bonbon] veux-tu ?</p>
+            <input type="number" id="Quantite_Bonbon" min="0" placeholder="Entrez la quantité voulu">
+            
+            <p id="Quantite_Dispo"> Quantité disponible : </p>
+        </div>
+
+        <script>
+            // Récupérer l'élément input
+            var Quantite_bonbon_Input = document.getElementById('Quantite_Bonbon');
+            // Récupérer l'élément pour afficher la quantité commandée
+            var Quantite_Dispo_Info = document.getElementById('Quantite_Dispo');
+            
+            // Écouter les changements de la valeur
+            Quantite_bonbon_Input.addEventListener('change', function() {
+              // Récupérer la valeur entrée par l'utilisateur
+              var Quantite = parseInt(Quantite_bonbon_Input.value);
+              localStorage.setItem('Quantite_Bonbon', Quantite.value);
+              // Mettre à jour le contenu du paragraphe
+              //Quantite_Dispo_Info.innerText = 
+            });
+        </script>
+    </div>
+    <footer>
+        <p>&copy; 2024 Candy Bar. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

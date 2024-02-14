@@ -7,25 +7,66 @@
     <link rel="stylesheet" href="../Style/Candy_Bar.css">
     <title>Candy Bar - Accueil</title>
     <style>
+        .banner {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .banner img {
+            width: 20%;
+            max-width: 600px;
+        }
+        .welcome-text {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .welcome-text p {
+            font-size: 18px;
+            color: #555;
+        }
+        table img{
+            width: 30px;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Candy Bar</h1>
+    <header class="pink">
+        <h1 class="brand-logo">Candy Bar</h1>
         <p>Le paradis des gourmands</p>
+        <nav class="nav-wrapper pink lighten-2">
+            <a href="#" class="hoverable">Accueil</a>
+            <a href="#" class="hoverable">À propos de nous</a>
+        </nav>
     </header>
-    <nav>
-        <a href="#">Accueil</a>
-        <a href="#">À propos de nous</a>
-    </nav>
     <div class="container">
         <div class="banner">
-            <img src="candy_bar_banner.jpg" alt="Candy Bar">
+            <img src="../Images/CandyShop_nobg.png" alt="Candy Bar">
         </div>
         <div class="welcome-text">
-            <h1>Bienvenue au Candy Bar</h1>
+            <h1 class="pink-text">Bienvenue au Candy Bar</h1>
             <p>Découvrez notre sélection exquise de bonbons, chocolats, et sucreries pour satisfaire vos envies de gourmandises. Que ce soit pour une occasion spéciale ou simplement pour vous faire plaisir, notre Candy Bar a tout ce qu'il vous faut!</p>
         </div>
+        <table >
+            <tr>
+                <td>
+                    <img src="../Images/bonbon_berlingo.jpg" alt="Image 1">
+                    <p>Texte pour l'image 1</p>
+                </td>
+                <td>
+                    <img src="../Images/bonbon_berlingo.jpg" alt="Image 2">
+                    <p>Texte pour l'image 2</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="../Images/bonbon_berlingo.jpg" alt="Image 3">
+                    <p>Texte pour l'image 3</p>
+                </td>
+                <td>
+                    <img src="../Images/bonbon_berlingo.jpg" alt="Image 4">
+                    <p>Texte pour l'image 4</p>
+                </td>
+            </tr>
+        </table>
     </div>
     <footer>
         <p>&copy; 2024 Candy Bar. Tous droits réservés.</p>
