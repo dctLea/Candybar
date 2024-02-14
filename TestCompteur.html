@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compteurs HTML</title>
+</head>
+<body>
+
+<h1>Compteurs HTML</h1>
+
+<div>
+  <p>Compteur 1 : <span id="compteur1">10</span></p>
+  <button onclick="incrementerCompteur('compteur1')">Incrémenter</button>
+  <input type="number" id="valeur1" min="0" placeholder="Entrez un nombre">
+  <button onclick="incrementerCompteurManuel('compteur1')">Incrémenter Manuellement</button>
+</div>
+
+<div>
+  <p>Compteur 2 : <span id="compteur2">10</span></p>
+  <button onclick="incrementerCompteur('compteur2')">Incrémenter</button>
+  <input type="number" id="valeur2" min="0" placeholder="Entrez un nombre">
+  <button onclick="incrementerCompteurManuel('compteur2')">Incrémenter Manuellement</button>
+</div>
+
+<div>
+  <p>Compteur 3 : <span id="compteur3">10</span></p>
+  <button onclick="incrementerCompteur('compteur3')">Incrémenter</button>
+  <input type="number" id="valeur3" min="0" placeholder="Entrez un nombre">
+  <button onclick="incrementerCompteurManuel('compteur3')">Incrémenter Manuellement</button>
+</div>
+
+<script>
+// Fonction pour incrémenter le compteur en cliquant sur le bouton
+function incrementerCompteur(id) {
+  var compteurElement = document.getElementById(id);
+  var compteurValeur = parseInt(compteurElement.innerText);
+  compteurElement.innerText = compteurValeur + 1;
+}
+
+// Fonction pour incrémenter le compteur manuellement
+function incrementerCompteurManuel(id) {
+  var compteurElement = document.getElementById(id);
+  var valeurInput = document.getElementById('valeur' + id.substr(-1)).value;
+  var compteurValeur = parseInt(compteurElement.innerText);
+  compteurElement.innerText = compteurValeur + parseInt(valeurInput);
+}
+</script>
+
+</body>
+</html>
