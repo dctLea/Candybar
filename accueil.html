@@ -115,29 +115,59 @@
             </tr>
             <script>
                 // Récupérer la référence du bouton "Confirmer"
-                var Confirmation_Quantite_Reglisse_Input = document.getElementById('boutonConfirmerReglisse');
-                Confirmation_Quantite_Reglisse_Input.addEventListener('click', function(event) {
-                    // Vérifier si le clic est bien effectué sur le bouton "Confirmer"
-                    if (event.target.id === 'boutonConfirmerReglisse') {
-                        // Récupérer la valeur de l'input
-                        var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
-                        
+                // Fonction pour afficher la fenêtre pop-up avec un message personnalisé
+            function afficherPopup(message) {
+                overlay.style.display = 'block';
+                popup.style.display = 'block';
+                popupMessage.textContent = message;
+            }
+
+            // Fonction pour masquer la fenêtre pop-up
+            function masquerPopup() {
+                overlay.style.display = 'none';
+                popup.style.display = 'none';
+            }
+
+
+            var Confirmation_Quantite_Reglisse_Input = document.getElementById('boutonConfirmerReglisse');
+            Confirmation_Quantite_Reglisse_Input.addEventListener('click', function(event) {
+                // Vérifier si le clic est bien effectué sur le bouton "Confirmer"
+                if (event.target.id === 'boutonConfirmerReglisse') {
+                    // Récupérer la valeur de l'input
+                    var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
+                    // Vérifier si la valeur n'est pas égale à zéro
+                    if (valeurInput !== 0 && !isNaN(valeurInput) && valeurInput !== "") {
                         // Récupérer l'ID du bonbon
                         var idBonbon = document.getElementById('Reglisse').textContent.trim();
                         // Construire le message de confirmation
-                        var messageConfirmation = "Êtes-vous sûr de vouloir commander " + valeurInput + " sachets de 100g de " + idBonbon + " ?";
-                        // Afficher la boîte de dialogue de confirmation
-                        var confirmation = confirm(messageConfirmation);
-                        // Vérifier la réponse de l'utilisateur
-                        if (confirmation) {
+                        afficherPopup("Êtes-vous sûr de vouloir commander " + valeurInput + " sachets de 100g de " + idBonbon + " ?");
+                        // Déclarer la variable confirmation
+                       // Déclarer les références aux boutons de la fenêtre pop-up
+                        var confirmBtn = document.getElementById('confirm-btn');
+                        var cancelBtn = document.getElementById('cancel-btn');
 
+                        // Écouter l'événement clic du bouton "Confirmer" de la pop-up
+                        confirmBtn.addEventListener('click', function() {
+                            // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
                             localStorage.setItem("Quantite_Reglisse", valeurInput);
-                            // Si l'utilisateur clique sur "Oui"
-                            // Laissez cette partie vide pour l'instant, car vous n'avez pas encore spécifié ce que vous voulez faire
-                            alert("Quantité enregistrée dans le panier!")
-                        }
+                            alert("Quantité enregistrée dans le panier!");
+                            masquerPopup();
+                        });
+
+                        // Écouter l'événement clic du bouton "Annuler" de la pop-up
+                        cancelBtn.addEventListener('click', function() {
+                            // Code à exécuter lorsque l'utilisateur clique sur le bouton "Annuler" de la pop-up
+                            alert("La commande a été annulée.");
+                            masquerPopup();
+                        });
+                    } else {
+                        // Si la valeur est égale à zéro
+                        var messageErreur = "Vous essayez de commander 0 bonbons!";
+                        alert(messageErreur);
                     }
-                });
+                }
+            });
+
                 // // Récupérer les ID des bonbons
                 // var ID_Dragees = document.getElementById('Quantite_Dragees');
                 // var ID_Dragibus = document.getElementById('Quantite_Dragibus');
@@ -147,6 +177,55 @@
                 // var Quantite_Dragibus_Input = parseInt(ID_Dragibus.value);
                 // var Quantite_Rings_Input = parseInt(ID_Rings.value);
             </script>
+            <style>
+            #overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+
+            #popup {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border-radius: 5px;
+                z-index: 1000;
+                display: none;
+            }
+
+            #popup-content {
+                text-align: center;
+            }
+
+            #popup-buttons {
+                margin-top: 20px;
+            }
+
+            button {
+                padding: 10px 20px;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+            </style>
+            <div id="overlay"></div>
+            <div id="popup">
+                <div id="popup-content">
+                    <h2>Confirmation de commande</h2>
+                    <p id="popup-message"></p>
+                    <div id="popup-buttons">
+                        <button id="confirm-btn">Confirmer</button>
+                        <button id="cancel-btn">Annuler</button>
+                    </div>
+                </div>
+            </div>
         </table>
     </div>
     <footer>
