@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Style/materialize.css">
     <link rel="stylesheet" href="../Style/Candy_Bar.css">
-    <title>Candy Bar - Accueil</title>
+    <title>Candy Bar - Cart</title>
     <style>
         .banner {
             text-align: center;
@@ -42,11 +42,11 @@
         <nav class="nav-wrapper pink lighten-2">
             <a href="accueil.html" class="hoverable">Accueil</a>
             <a href="#" class="hoverable">À propos de nous</a>
-            <a href="#" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
+            <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
         </nav>
     </header>
     <body>
-        <h1>Votre panier</h1>
+        <h1 class="pink-text">Votre panier</h1>
         <div id="cartItems">
             <!-- Les éléments confirmés seront affichés ici -->
         </div>
@@ -57,23 +57,39 @@
                 var cartItemsDiv = document.getElementById("cartItems");
     
                 // Récupérer les valeurs des quantités confirmées
-                // var quantiteDragrees = parseInt(localStorage.getItem("Quantite_Dragees"));
                 var quantiteReglisse = parseInt(localStorage.getItem("Quantite_Reglisse"));
-                // var quantiteDragibus = parseInt(localStorage.getItem("Quantite_Dragibus"));
-                // var quantiteRings = parseInt(localStorage.getItem("Quantite_Rings"));
-    
+
                 // Créer des éléments HTML pour afficher les quantités confirmées
-                // var cartHTML = "<p>Quantité de Dragées: " + quantiteDragrees + "</p>";
+
+                if (quantiteReglisse != 0){
                 var cartHTML = "<p>Quantité de Réglisse KiPik: " + (quantiteReglisse ? quantiteReglisse : 0) + "</p>";
-                // cartHTML += "<p>Quantité de Dragibus: " + quantiteDragibus + "</p>";
-                // cartHTML += "<p>Quantité de Rings KiPik: " + quantiteRings + "</p>";
-    
+
+                // Afficher les éléments dans le panier
+                cartItemsDiv.innerHTML = cartHTML;
+            }else{
+                var cartHTML = "<p>Votre panier est vide.</p>";
+
                 // Afficher les éléments dans le panier
                 cartItemsDiv.innerHTML = cartHTML;
             }
+        }
     
             // Appeler la fonction pour afficher le panier lorsque la page est chargée
             window.onload = afficherPanier;
+        </script>
+        <div>
+            <input class="bouton_payer" type="button" id="payer_commande" value="Payer">
+        </div>
+        
+        <script>
+            // Sélectionner le bouton "Payer"
+            var boutonPayer = document.getElementById('payer_commande');
+        
+            // Ajouter un écouteur d'événements pour le clic sur le bouton
+            boutonPayer.addEventListener('click', function() {
+                // Rediriger vers la page payement.html
+                window.location.href = 'payment.html';
+            });
         </script>
     <footer>
         <p>&copy; 2024 Candy Bar. Tous droits réservés.</p>
