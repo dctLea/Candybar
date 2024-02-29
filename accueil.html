@@ -114,7 +114,6 @@
                 </td>
             </tr>
             <script>
-                // Récupérer la référence du bouton "Confirmer"
                 // Fonction pour afficher la fenêtre pop-up avec un message personnalisé
                 function afficherPopup(message) {
                     // Récupérer les éléments de la pop-up
@@ -130,51 +129,51 @@
                     messageContainer.textContent = message;
                 }
 
-            // Fonction pour masquer la fenêtre pop-up
-            function masquerPopup() {
-                overlay.style.display = 'none';
-                popup.style.display = 'none';
-            }
-
-
-            var Confirmation_Quantite_Reglisse_Input = document.getElementById('boutonConfirmerReglisse');
-            Confirmation_Quantite_Reglisse_Input.addEventListener('click', function(event) {
-                // Vérifier si le clic est bien effectué sur le bouton "Confirmer"
-                if (event.target.id === 'boutonConfirmerReglisse') {
-                    // Récupérer la valeur de l'input
-                    var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
-                    // Vérifier si la valeur n'est pas égale à zéro
-                    if (valeurInput !== 0 && !isNaN(valeurInput) && valeurInput !== "") {
-                        // Récupérer l'ID du bonbon
-                        var idBonbon = document.getElementById('Reglisse').textContent.trim();
-                        // Construire le message de confirmation
-                        afficherPopup("Êtes-vous sûr de vouloir commander " + valeurInput + " sachets de 100g de " + idBonbon + " ?");
-                        // Déclarer la variable confirmation
-                       // Déclarer les références aux boutons de la fenêtre pop-up
-                        var confirmBtn = document.getElementById('confirm-btn');
-                        var cancelBtn = document.getElementById('cancel-btn');
-
-                        // Écouter l'événement clic du bouton "Confirmer" de la pop-up
-                        confirmBtn.addEventListener('click', function() {
-                            // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
-                            localStorage.setItem("Quantite_Reglisse", valeurInput);
-                            alert("Quantité enregistrée dans le panier!");
-                            masquerPopup();
-                        });
-
-                        // Écouter l'événement clic du bouton "Annuler" de la pop-up
-                        cancelBtn.addEventListener('click', function() {
-                            // Code à exécuter lorsque l'utilisateur clique sur le bouton "Annuler" de la pop-up
-                            alert("La commande a été annulée.");
-                            masquerPopup();
-                        });
-                    } else {
-                        // Si la valeur est égale à zéro
-                        var messageErreur = "Vous essayez de commander 0 bonbons!";
-                        alert(messageErreur);
-                    }
+                // Fonction pour masquer la fenêtre pop-up
+                function masquerPopup() {
+                    overlay.style.display = 'none';
+                    popup.style.display = 'none';
                 }
-            });
+
+
+                var Confirmation_Quantite_Reglisse_Input = document.getElementById('boutonConfirmerReglisse');
+                Confirmation_Quantite_Reglisse_Input.addEventListener('click', function(event) {
+                    // Vérifier si le clic est bien effectué sur le bouton "Confirmer"
+                    if (event.target.id === 'boutonConfirmerReglisse') {
+                        // Récupérer la valeur de l'input
+                        var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
+                        // Vérifier si la valeur n'est pas égale à zéro
+                        if (valeurInput !== 0 && !isNaN(valeurInput) && valeurInput !== "") {
+                            // Récupérer l'ID du bonbon
+                            var idBonbon = document.getElementById('Reglisse').textContent.trim();
+                            // Construire le message de confirmation
+                            afficherPopup("Êtes-vous sûr de vouloir commander " + valeurInput + " sachets de 100g de " + idBonbon + " ?");
+                            // Déclarer la variable confirmation
+                        // Déclarer les références aux boutons de la fenêtre pop-up
+                            var confirmBtn = document.getElementById('confirm-btn');
+                            var cancelBtn = document.getElementById('cancel-btn');
+
+                            // Écouter l'événement clic du bouton "Confirmer" de la pop-up
+                            confirmBtn.addEventListener('click', function() {
+                                // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
+                                localStorage.setItem("Quantite_Reglisse", valeurInput);
+                                alert("Quantité enregistrée dans le panier!");
+                                masquerPopup();
+                            });
+
+                            // Écouter l'événement clic du bouton "Annuler" de la pop-up
+                            cancelBtn.addEventListener('click', function() {
+                                // Code à exécuter lorsque l'utilisateur clique sur le bouton "Annuler" de la pop-up
+                                alert("La commande a été annulée.");
+                                masquerPopup();
+                            });
+                        } else {
+                            // Si la valeur est égale à zéro
+                            var messageErreur = "Vous essayez de commander 0 bonbons!";
+                            alert(messageErreur);
+                        }
+                    }
+                });
 
                 // // Récupérer les ID des bonbons
                 // var ID_Dragees = document.getElementById('Quantite_Dragees');
@@ -185,7 +184,7 @@
                 // var Quantite_Dragibus_Input = parseInt(ID_Dragibus.value);
                 // var Quantite_Rings_Input = parseInt(ID_Rings.value);
             </script>
-            <style>
+        <style>
             #overlay {
                 position: fixed;
                 top: 0;
@@ -235,7 +234,7 @@
                 cursor: pointer; /* Curseur pointeur */
                 border-radius: 5px; /* Coins arrondis */
             }
-            </style>
+        </style>
             <div id="overlay"></div>
             <div id="popup">
                 <div id="popup-content">
