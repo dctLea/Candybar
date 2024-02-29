@@ -32,7 +32,25 @@
             width: 15vw;
             height: 15vw;
         }
-
+        .confirmer {
+            display: inline-block;
+            color: green;
+            text-align: center;
+            width: 45%;
+            padding: 14px 20px;
+            margin: 8px 2%;
+            border: none;                     
+            border-radius: 4px;                    
+            cursor: pointer;                    
+            font-size: 16px;
+            transition: 0.3s ease;                                                           
+        }
+        .confirmer:hover {
+            background-color: #4cb828;
+         }
+                                
+                            
+                        
     </style>
 </head>
 <body>
@@ -55,40 +73,68 @@
         <table >
             <tr>
                 <td class="card center hoverable">
-                    <a href="" class="waves-effect">
+                    <div class="waves-effect">
                         <img src="../Images/bonbon_berlingo.jpg" alt="Image 1">
                         <p id="Dragees" class="grey-text text-darken-2">Dragées colorées</p>
-                        <p class="grey-text text-darken-2"> Commander :</p>
+                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Dragees" min="0" placeholder="Quantité">
-                    </a>
+                        <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Confirmer">
+
+                    </div>
                 </td>
                 <td class="card center hoverable">
-                    <a href="" class="waves-effect">
+                    <div class="waves-effect">
                         <img src="../Images/bonbon_haribo_baton.jpeg" alt="Image 2">
-                        <p id="Reglisse"class="grey-text text-darken-2">Réglisse KiPik</p>
-                        <p class="grey-text text-darken-2"> Commander :</p>
+                        <p id="Reglisse" class="grey-text text-darken-2">Réglisse KiPik</p>
+                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantité">
-                    </a>
+                        <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Confirmer">
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td class="card center hoverable">
-                    <a href="" class="waves-effect">
+                    <div class="waves-effect">
                         <img src="../Images/bonbon_haribo_dragibus.jpg" alt="Image 3">
                         <p id="Dragibus" class="grey-text text-darken-2">Dragibus</p>
-                        <p class="grey-text text-darken-2"> Commander :</p>
+                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Dragibus" min="0" placeholder="Quantité">
-                    </a>
+                        <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Confirmer">
+                    </div>
                 </td>
                 <td class="card center hoverable">
-                    <a href="" class="waves-effect">
+                    <div class="waves-effect">
                         <img src="../Images/bonbon_haribo_ovale.png" alt="Image 4">
                         <p id="Rings" class="grey-text text-darken-2">Rings KiPik</p>
-                        <p class="grey-text text-darken-2"> Commander :</p>
+                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g):</p>
                         <input type="number" id="Quantite_Rings" min="0" placeholder="Quantité">
-                    </a>
+                        <input type="button" id="boutonConfirmerRings" class="confirmer" value="Confirmer">
+                    </div>
                 </td>
             </tr>
+            <script>
+                // Récupérer la référence du bouton "Confirmer"
+                var Confirmation_Quantite_Reglisse_Input = document.getElementById('boutonConfirmerReglisse');
+                Confirmation_Quantite_Reglisse_Input.addEventListener('click', function(event) {
+                    // Vérifier si le clic est bien effectué sur le bouton "Confirmer"
+                    if (event.target.id === 'boutonConfirmerReglisse') {
+                        // Empêcher le comportement par défaut du bouton
+                        event.preventDefault();
+                        // Récupérer la valeur de l'input
+                        var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
+                        // Afficher la valeur dans la console (juste pour vérifier si c'est ok)
+                        console.log("Valeur de l'input de quantité de réglisse : " + valeurInput);
+                    }
+                });
+                // // Récupérer les ID des bonbons
+                // var ID_Dragees = document.getElementById('Quantite_Dragees');
+                // var ID_Dragibus = document.getElementById('Quantite_Dragibus');
+                // var ID_Rings = document.getElementById('Quantite_Rings');
+                // // Récupérer les valeurs d'input correspondant aux ID
+                // var Quantite_Dragees_Input = parseInt(ID_Dragees.value);
+                // var Quantite_Dragibus_Input = parseInt(ID_Dragibus.value);
+                // var Quantite_Rings_Input = parseInt(ID_Rings.value);
+            </script>
         </table>
     </div>
     <footer>
