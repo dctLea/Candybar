@@ -116,11 +116,19 @@
             <script>
                 // Récupérer la référence du bouton "Confirmer"
                 // Fonction pour afficher la fenêtre pop-up avec un message personnalisé
-            function afficherPopup(message) {
-                overlay.style.display = 'block';
-                popup.style.display = 'block';
-                popupMessage.textContent = message;
-            }
+                function afficherPopup(message) {
+                    // Récupérer les éléments de la pop-up
+                    var overlay = document.getElementById('overlay');
+                    var popup = document.getElementById('popup');
+                    var messageContainer = document.getElementById('popup-message');
+
+                    // Afficher la pop-up
+                    overlay.style.display = 'block';
+                    popup.style.display = 'block';
+
+                    // Afficher le message dans la pop-up
+                    messageContainer.textContent = message;
+                }
 
             // Fonction pour masquer la fenêtre pop-up
             function masquerPopup() {
@@ -218,7 +226,7 @@
             <div id="overlay"></div>
             <div id="popup">
                 <div id="popup-content">
-                    <h2>Confirmation de commande</h2>
+                    <h3>Confirmation d'ajout dans le panier</h3>
                     <p id="popup-message"></p>
                     <div id="popup-buttons">
                         <button id="confirm-btn">Confirmer</button>
