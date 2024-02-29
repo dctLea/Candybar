@@ -58,8 +58,9 @@
         <h1 class="brand-logo">Candy Bar</h1>
         <p>Le paradis des gourmands</p>
         <nav class="nav-wrapper pink lighten-2">
-            <a href="#" class="hoverable">Accueil</a>
+            <a href="accueil.html" class="hoverable">Accueil</a>
             <a href="#" class="hoverable">À propos de nous</a>
+            <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
         </nav>
     </header>
     <div class="container">
@@ -78,7 +79,7 @@
                         <p id="Dragees" class="grey-text text-darken-2">Dragées colorées</p>
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Dragees" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Confirmer">
+                        <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Ajouter au panier">
 
                     </div>
                 </td>
@@ -88,7 +89,7 @@
                         <p id="Reglisse" class="grey-text text-darken-2">Réglisse KiPik</p>
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Confirmer">
+                        <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Ajouter au panier">
                     </div>
                 </td>
             </tr>
@@ -99,7 +100,7 @@
                         <p id="Dragibus" class="grey-text text-darken-2">Dragibus</p>
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Dragibus" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Confirmer">
+                        <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Ajouter au panier">
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -108,7 +109,7 @@
                         <p id="Rings" class="grey-text text-darken-2">Rings KiPik</p>
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g):</p>
                         <input type="number" id="Quantite_Rings" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerRings" class="confirmer" value="Confirmer">
+                        <input type="button" id="boutonConfirmerRings" class="confirmer" value="Ajouter au panier">
                     </div>
                 </td>
             </tr>
@@ -118,12 +119,23 @@
                 Confirmation_Quantite_Reglisse_Input.addEventListener('click', function(event) {
                     // Vérifier si le clic est bien effectué sur le bouton "Confirmer"
                     if (event.target.id === 'boutonConfirmerReglisse') {
-                        // Empêcher le comportement par défaut du bouton
-                        event.preventDefault();
                         // Récupérer la valeur de l'input
                         var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
-                        // Afficher la valeur dans la console (juste pour vérifier si c'est ok)
-                        console.log("Valeur de l'input de quantité de réglisse : " + valeurInput);
+                        
+                        // Récupérer l'ID du bonbon
+                        var idBonbon = document.getElementById('Reglisse').textContent.trim();
+                        // Construire le message de confirmation
+                        var messageConfirmation = "Êtes-vous sûr de vouloir commander " + valeurInput + " sachets de 100g de " + idBonbon + " ?";
+                        // Afficher la boîte de dialogue de confirmation
+                        var confirmation = confirm(messageConfirmation);
+                        // Vérifier la réponse de l'utilisateur
+                        if (confirmation) {
+
+                            localStorage.setItem("Quantite_Reglisse", valeurInput);
+                            // Si l'utilisateur clique sur "Oui"
+                            // Laissez cette partie vide pour l'instant, car vous n'avez pas encore spécifié ce que vous voulez faire
+                            alert("Quantité enregistrée dans le panier!")
+                        }
                     }
                 });
                 // // Récupérer les ID des bonbons

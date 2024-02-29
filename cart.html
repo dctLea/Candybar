@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/materialize.css">
+    <link rel="stylesheet" href="../Style/Candy_Bar.css">
+    <title>Candy Bar - Accueil</title>
+    <style>
+        .banner {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .banner img {
+            width: 20%;
+            max-width: 600px;
+        }
+        .welcome-text {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .welcome-text p {
+            font-size: 18px;
+        }
+        
+        table {
+            border-collapse: separate;
+            border-spacing: 3vw;
+            width: 100%;
+        }
+        td img {
+            width: 15vw;
+            height: 15vw;
+        }
+                        
+    </style>
+</head>
+<body>
+    <header class="pink">
+        <h1 class="brand-logo">Candy Bar</h1>
+        <p>Le paradis des gourmands</p>
+        <nav class="nav-wrapper pink lighten-2">
+            <a href="accueil.html" class="hoverable">Accueil</a>
+            <a href="#" class="hoverable">À propos de nous</a>
+            <a href="#" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
+        </nav>
+    </header>
+    <body>
+        <h1>Votre panier</h1>
+        <div id="cartItems">
+            <!-- Les éléments confirmés seront affichés ici -->
+        </div>
+    
+        <script>
+            // Fonction pour afficher les éléments confirmés dans le panier
+            function afficherPanier() {
+                var cartItemsDiv = document.getElementById("cartItems");
+    
+                // Récupérer les valeurs des quantités confirmées
+                // var quantiteDragrees = parseInt(localStorage.getItem("Quantite_Dragees"));
+                var quantiteReglisse = parseInt(localStorage.getItem("Quantite_Reglisse"));
+                // var quantiteDragibus = parseInt(localStorage.getItem("Quantite_Dragibus"));
+                // var quantiteRings = parseInt(localStorage.getItem("Quantite_Rings"));
+    
+                // Créer des éléments HTML pour afficher les quantités confirmées
+                // var cartHTML = "<p>Quantité de Dragées: " + quantiteDragrees + "</p>";
+                var cartHTML = "<p>Quantité de Réglisse KiPik: " + (quantiteReglisse ? quantiteReglisse : 0) + "</p>";
+                // cartHTML += "<p>Quantité de Dragibus: " + quantiteDragibus + "</p>";
+                // cartHTML += "<p>Quantité de Rings KiPik: " + quantiteRings + "</p>";
+    
+                // Afficher les éléments dans le panier
+                cartItemsDiv.innerHTML = cartHTML;
+            }
+    
+            // Appeler la fonction pour afficher le panier lorsque la page est chargée
+            window.onload = afficherPanier;
+        </script>
+    <footer>
+        <p>&copy; 2024 Candy Bar. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
