@@ -18,7 +18,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        form input[type="button"] {
+        form input[type="submit"] {
             width: 45%;
             background-color: #4CAF50;
             color: white;
@@ -29,7 +29,7 @@
             cursor: pointer;
             float: left;
         }
-        form input[type="button"]:hover {
+        form input[type="submit"]:hover {
             background-color: #45a049;
         }
         form input[type="reset"] {
@@ -46,7 +46,61 @@
         form input[type="reset"]:hover {
             background-color: #da190b;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
 
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+        }
+
+        .modal-btns {
+            text-align: center;
+        }
+
+        .modal-btns button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .modal-btns button.primary {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .modal-btns button.primary:hover {
+            background-color: #45a049;
+        }
+
+        .modal-btns button.secondary {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .modal-btns button.secondary:hover {
+            background-color: #da190b;
+        }
     </style>
 </head>
 <body>
@@ -94,37 +148,47 @@
             <input id="submit_payment" type="submit" value="Payer la commande">
             <input id="cancel_payment" type="reset" value="Cancel my Payment">
         </form>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <p>Êtes-vous sûr de vouloir procéder au paiement ?</p>
+                <div class="modal-btns">
+                    <button id="confirmPayment" class="primary">Oui</button>
+                    <button id="cancelPayment" class="secondary">Annuler</button>
+                </div>
+            </div>
+        </div>
         <script>
-            var paymentForm = document.getElementById('payment-form');
-        
-            paymentForm.addEventListener('submit', function(event) {
-                // Empêcher le comportement par défaut du formulaire
-                event.preventDefault();
-                console.log("test1")
-                // Réinitialiser la quantité entrée en vidant la valeur de l'élément correspondant
-                // Notez que vous devez remplacer 'quantity-input' par l'ID de votre champ de quantité
-                var quantiteReglisse = localStorage.getItem("Quantite_Reglisse");
+            function openModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        }
 
-                    // Si une quantité de réglisse a été précédemment stockée, la mettre à 0
-                    if (quantiteReglisse !== null) {
-                        // Réinitialiser la quantité de réglisse à 0 dans localStorage
-                        localStorage.setItem("Quantite_Reglisse", 0);
-                        // Rediriger l'utilisateur vers la page d'accueil
-                        window.location.href = 'accueil.html';
-                    }
-                // Rediriger l'utilisateur vers la page d'accueil
-                window.location.href = 'accueil.html';
-                console.log("test3")
-            });
-            
-            var Annuler_paiement = document.getElementById('cancel_payment');
-            Annuler_paiement.addEventListener('click', function(event) {
-                // Empêcher le comportement par défaut du bouton
-                event.preventDefault();
-                // Rediriger l'utilisateur vers la page d'accueil
-                window.location.href = 'accueil.html';
-            });
-        </script>
+        // Fermer la fenêtre modale
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Écouteur d'événements pour le bouton de confirmation du paiement
+        document.getElementById("confirmPayment").addEventListener("click", function() {
+            // Effectuer les actions nécessaires pour le paiement
+            localStorage.setItem("Quantite_Reglisse", 0);
+            window.location.href = 'accueil.html';
+        });
+
+        // Écouteur d'événements pour le bouton d'annulation du paiement
+        document.getElementById("cancelPayment").addEventListener("click", function() {
+            // Fermer la fenêtre modale
+            closeModal();
+        });
+
+        // Afficher la fenêtre modale lors de la soumission du formulaire
+        var paymentForm = document.getElementById("payment-form");
+        paymentForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+            openModal(); // Afficher la fenêtre modale
+        });
+    </script>
     </div>
     <footer>
         <p>&copy; 2024 Candy Bar. All Rights Reserved.</p>
