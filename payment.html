@@ -159,9 +159,17 @@
         </div>
         <script>
             function openModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "block";
-        }
+                // Vérifier si le panier est vide
+                var quantiteReglisse = parseInt(localStorage.getItem("Quantite_Reglisse"));
+                if (!quantiteReglisse || quantiteReglisse === 0) {
+                    alert("Votre panier est vide! Aucun paiement à effectuer.");
+                    return; // Arrêter l'exécution de la fonction si le panier est vide
+                }
+                
+                // Si le panier n'est pas vide, afficher la fenêtre modale
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+            }
 
         // Fermer la fenêtre modale
         function closeModal() {
@@ -178,9 +186,36 @@
         });
 
         // Écouteur d'événements pour le bouton d'annulation du paiement
-        document.getElementById("cancelPayment").addEventListener("click", function() {
+        // Écouteur d'événements pour le bouton d'annulation du paiement
+        document.getElementById("cancel_payment").addEventListener("click", function(event) {
+            // Empêcher le comportement par défaut du lien
+            event.preventDefault();
+            
+            // Afficher un message dans la console pour vérifier si l'événement est correctement déclenché
+            console.log("Bouton d'annulation du paiement cliqué.");
+
             // Fermer la fenêtre modale
             closeModal();
+
+            
+                // Rediriger vers cart.html
+                window.location.href = 'cart.html';
+            
+        });
+        document.getElementById("cancelPayment").addEventListener("click", function(event) {
+            // Empêcher le comportement par défaut du lien
+            event.preventDefault();
+            
+            // Afficher un message dans la console pour vérifier si l'événement est correctement déclenché
+            console.log("Bouton d'annulation du paiement cliqué.");
+
+            // Fermer la fenêtre modale
+            closeModal();
+
+            
+            // Rediriger vers cart.html
+            window.location.href = 'cart.html';
+            
         });
 
         // Afficher la fenêtre modale lors de la soumission du formulaire

@@ -115,7 +115,8 @@
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Dragees" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Ajouter au panier">
-
+                        <br>
+                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -138,6 +139,8 @@
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Dragibus" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Ajouter au panier">
+                        <br>
+                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -147,6 +150,8 @@
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g):</p>
                         <input type="number" id="Quantite_Rings" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerRings" class="confirmer" value="Ajouter au panier">
+                        <br>
+                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
             </tr>
@@ -161,7 +166,7 @@
                     if (valeurInput !== 0 && !isNaN(valeurInput) && valeurInput !== "") {
                         var idBonbon = document.getElementById('Reglisse').textContent.trim();
 
-                        
+                        localStorage.setItem("Quantite_Reglisse", valeurInput);
                         // Afficher la fenêtre pop-up de confirmation
                         afficherPopup("Êtes-vous sûr de vouloir commander directement " + valeurInput + " sachets de 100g de " + idBonbon + " ?\n Si oui, vous serez redirigé vers la page de paiement.");
                         var confirmBtn = document.getElementById('confirm-btn');
@@ -202,6 +207,22 @@
 
                     // Afficher le message dans la pop-up
                     messageContainer.textContent = message;
+
+                    // Ajouter le bouton "Confirmer" uniquement pour les commandes directes
+                    var confirmBtn = document.getElementById('confirm-btn');
+                    confirmBtn.style.display = 'block-inline';
+
+                    // Ajouter l'écouteur d'événements pour le bouton "Confirmer"
+                    confirmBtn.addEventListener('click', function() {
+                        // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
+                        localStorage.setItem("Quantite_Reglisse", valeurInput);
+                        alert("Quantité enregistrée dans le panier!");
+                        masquerPopup();
+                    });
+
+                    // Cacher le bouton "Annuler" pour les commandes directes
+                    var cancelBtn = document.getElementById('cancel-btn');
+                    cancelBtn.style.display = 'block-inline';
                 }
 
                 // Fonction pour masquer la fenêtre pop-up
