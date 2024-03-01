@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/materialize.css">
+    <link rel="stylesheet" href="../Style/Candy_Bar.css">
+    <title>Candy Bar - Payment</title>
+    <style>
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form input[type="submit"] {
+            width: 45%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0 8px 2%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: left;
+        }
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        form input[type="reset"] {
+            width: 45%;
+            background-color: #f44336;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 2% 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        form input[type="reset"]:hover {
+            background-color: #da190b;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+        }
+
+        .modal-btns {
+            text-align: center;
+        }
+
+        .modal-btns button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .modal-btns button.primary {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .modal-btns button.primary:hover {
+            background-color: #45a049;
+        }
+
+        .modal-btns button.secondary {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .modal-btns button.secondary:hover {
+            background-color: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <header class="pink">
+        <h1 class="brand-logo">Candy Bar</h1>
+        <p>Le paradis des gourmands</p>
+        <nav class="nav-wrapper pink lighten-2">
+            <a href="accueil.html" class="hoverable">Accueil</a>
+            <a href="#" class="hoverable">À propos de nous</a>
+            <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
+        </nav>
+    </header> 
+    <div class="container">
+        <form action="#" method="post" id="payment-form">
+            <h2 class="pink-text">Payment Information</h2>
+            <img src="../Images/MasterCard_Logo.png" width="140" height="80">
+            <br>
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="postal_code">Postal Code:</label>
+            <input type="text" id="postal_code" name="postal_code" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="credit_card_number">Credit Card Number:</label>
+            <input type="text" id="credit_card_number" name="credit_card_number" required>
+
+            <label for="expiration_date">Expiration Date:</label>
+            <input type="date" id="expiration_date" name="expiration_date" required>
+
+            <label for="security_code">Security Code:</label>
+            <input type="password" id="security_code" name="security_code" required>
+
+            <label for="account_holder">Account Holder:</label>
+            <input type="text" id="account_holder" name="account_holder" required>
+
+            <input id="submit_payment" type="submit" value="Payer la commande">
+            <input id="cancel_payment" type="reset" value="Cancel my Payment">
+        </form>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <p>Êtes-vous sûr de vouloir procéder au paiement ?</p>
+                <div class="modal-btns">
+                    <button id="confirmPayment" class="primary">Oui</button>
+                    <button id="cancelPayment" class="secondary">Annuler</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function openModal() {
+                // Vérifier si le panier est vide
+                var quantiteReglisse = parseInt(localStorage.getItem("Quantite_Reglisse"));
+                if (!quantiteReglisse || quantiteReglisse === 0) {
+                    alert("Votre panier est vide! Aucun paiement à effectuer.");
+                    return; // Arrêter l'exécution de la fonction si le panier est vide
+                }
+                
+                // Si le panier n'est pas vide, afficher la fenêtre modale
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+            }
+
+        // Fermer la fenêtre modale
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Écouteur d'événements pour le bouton de confirmation du paiement
+        document.getElementById("confirmPayment").addEventListener("click", function() {
+            // Effectuer les actions nécessaires pour le paiement
+            localStorage.setItem("Quantite_Reglisse", 0);
+            localStorage.setItem("paymentConfirmed", "true");
+            window.location.href = 'accueil.html';
+        });
+
+        // Écouteur d'événements pour le bouton d'annulation du paiement
+        // Écouteur d'événements pour le bouton d'annulation du paiement
+        document.getElementById("cancel_payment").addEventListener("click", function(event) {
+            // Empêcher le comportement par défaut du lien
+            event.preventDefault();
+            
+            // Afficher un message dans la console pour vérifier si l'événement est correctement déclenché
+            console.log("Bouton d'annulation du paiement cliqué.");
+
+            // Fermer la fenêtre modale
+            closeModal();
+
+            
+                // Rediriger vers cart.html
+                window.location.href = 'cart.html';
+            
+        });
+        document.getElementById("cancelPayment").addEventListener("click", function(event) {
+            // Empêcher le comportement par défaut du lien
+            event.preventDefault();
+            
+            // Afficher un message dans la console pour vérifier si l'événement est correctement déclenché
+            console.log("Bouton d'annulation du paiement cliqué.");
+
+            // Fermer la fenêtre modale
+            closeModal();
+
+            
+            // Rediriger vers cart.html
+            window.location.href = 'cart.html';
+            
+        });
+
+        // Afficher la fenêtre modale lors de la soumission du formulaire
+        var paymentForm = document.getElementById("payment-form");
+        paymentForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+            openModal(); // Afficher la fenêtre modale
+        });
+    </script>
+    </div>
+    <footer>
+        <p>&copy; 2024 Candy Bar. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
