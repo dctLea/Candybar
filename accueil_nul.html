@@ -58,9 +58,9 @@
         <h1 class="brand-logo">Candy Bar</h1>
         <p>Le paradis des gourmands</p>
         <nav class="nav-wrapper pink lighten-2">
-            <a href="accueil.html" class="hoverable">Accueil</a>
+            <a href="accueil_nul.html" class="hoverable">Accueil</a>
             <a href="#" class="hoverable">À propos de nous</a>
-            <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
+            <a href="cart_nul.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
         </nav>
     </header>
     <div class="container">
@@ -116,7 +116,7 @@
                         <input type="number" id="Quantite_Dragees" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Ajouter au panier">
                         <br>
-                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -127,7 +127,7 @@
                         <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Ajouter au panier">
                         <br>
-                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
             </tr>
@@ -140,7 +140,7 @@
                         <input type="number" id="Quantite_Dragibus" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Ajouter au panier">
                         <br>
-                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -151,7 +151,7 @@
                         <input type="number" id="Quantite_Rings" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerRings" class="confirmer" value="Ajouter au panier">
                         <br>
-                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
             </tr>
@@ -175,7 +175,7 @@
                             // Écouter l'événement clic du bouton "Confirmer" de la pop-up
                             confirmBtn.addEventListener('click', function() {
                                 // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
-                                window.location.href = 'payment.html';
+                                window.location.href = 'payment_nul.html';
                                 masquerPopup();
                             });
 
