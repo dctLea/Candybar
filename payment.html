@@ -173,6 +173,7 @@
         document.getElementById("confirmPayment").addEventListener("click", function() {
             // Effectuer les actions nécessaires pour le paiement
             localStorage.setItem("Quantite_Reglisse", 0);
+            localStorage.setItem("paymentConfirmed", "true");
             window.location.href = 'accueil.html';
         });
 

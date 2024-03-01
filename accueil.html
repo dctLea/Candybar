@@ -72,6 +72,40 @@
             <p class="grey-text text-darken-2">Découvrez notre sélection exquise de bonbons, chocolats, et sucreries pour satisfaire vos envies de gourmandises. Que ce soit pour une occasion spéciale ou simplement pour vous faire plaisir, notre Candy Bar a tout ce qu'il vous faut!</p>
         </div>
         <div class="pink-text" id="confirmation-message" style="display: none;">Commande passée, merci!</div>
+        <div class="OK_commande" id="confirmationMessage"></div>
+        <style>
+            .OK_commande {
+            display: inline;
+            color: #d81b60;
+            width: 45%;
+            padding: 14px 20px;
+            margin: 8px 2%;
+            border: none;                     
+            border-radius: 4px;                    
+            cursor: pointer;                    
+            font-size: 20px;
+            transition: 0.3s ease;                                                           
+        }
+        </style>
+        <script>
+            // Vérifier si le paiement a été confirmé
+            var paymentConfirmed = localStorage.getItem("paymentConfirmed");
+            if (paymentConfirmed === "true") {
+                // Sélectionner l'élément où afficher le message de confirmation
+                var confirmationMessage = document.getElementById("confirmationMessage");
+                
+                // Créer un élément pour contenir le message
+                var messageElement = document.createElement("p");
+                messageElement.textContent = "Votre commande a bien été prise en compte! Merci.";
+                
+                // Ajouter l'élément au conteneur de confirmation
+                confirmationMessage.appendChild(messageElement);
+                
+                // Effacer la variable de confirmation de paiement pour éviter de l'afficher à nouveau lors de prochaines visites
+                localStorage.removeItem("paymentConfirmed");
+            }
+        </script>
+        
         <table >
             <tr>
                 <td class="card center hoverable">
@@ -91,6 +125,8 @@
                         <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
                         <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantité">
                         <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Ajouter au panier">
+                        <br>
+                        <a href="payment.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
                     </div>
                 </td>
             </tr>
@@ -115,6 +151,44 @@
                 </td>
             </tr>
             <script>
+                function commanderDirectement(event) {
+                    // Empêcher le comportement par défaut de l'événement de clic sur le lien
+                    event.preventDefault();
+                    
+                    // Récupérer la valeur de l'input
+                    var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
+                    // Récupérer l'ID du bonbon
+                    if (valeurInput !== 0 && !isNaN(valeurInput) && valeurInput !== "") {
+                        var idBonbon = document.getElementById('Reglisse').textContent.trim();
+
+                        
+                        // Afficher la fenêtre pop-up de confirmation
+                        afficherPopup("Êtes-vous sûr de vouloir commander directement " + valeurInput + " sachets de 100g de " + idBonbon + " ?\n Si oui, vous serez redirigé vers la page de paiement.");
+                        var confirmBtn = document.getElementById('confirm-btn');
+                            var cancelBtn = document.getElementById('cancel-btn');
+
+                            // Écouter l'événement clic du bouton "Confirmer" de la pop-up
+                            confirmBtn.addEventListener('click', function() {
+                                // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
+                                window.location.href = 'payment.html';
+                                masquerPopup();
+                            });
+
+                            // Écouter l'événement clic du bouton "Annuler" de la pop-up
+                            cancelBtn.addEventListener('click', function() {
+                                // Code à exécuter lorsque l'utilisateur clique sur le bouton "Annuler" de la pop-up
+                                alert("La commande a été annulée.");
+                                masquerPopup();
+                            });
+                    }else {
+                            // Si la valeur est égale à zéro
+                            var messageErreur = "⚠WARNING⚠ Vous essayez de commander 0 bonbons!\n Merci d'indiquer une quantité minimale de 1 sachet avant d'ajouter au panier!";
+                            alert(messageErreur);
+                        }
+                }
+
+                // Écouteur d'événements pour le bouton "Commander directement"
+                document.getElementById("order_now").addEventListener("click", commanderDirectement);
                 // Fonction pour afficher la fenêtre pop-up avec un message personnalisé
                 function afficherPopup(message) {
                     // Récupérer les éléments de la pop-up
