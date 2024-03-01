@@ -49,8 +49,19 @@
     <div id="cartItems">
         <!-- Les éléments confirmés seront affichés ici -->
     </div>
-
+    <div id="overlay"></div>
+<div id="popup">
+    <div id="popup-content">
+        <p>Êtes-vous sûr de vouloir vider votre panier ?</p>
+        <div id="popup-buttons">
+            <button id="confirm-btn" class="green-btn">Oui</button>
+            <button id="cancel-btn" class="red-btn">Non</button>
+        </div>
+    </div>
+</div>
     <script>
+    
+
         // Fonction pour afficher les éléments confirmés dans le panier
         function afficherPanier() {
             var cartItemsDiv = document.getElementById("cartItems");
@@ -71,11 +82,105 @@
 
         // Appeler la fonction pour afficher le panier lorsque la page est chargée
         window.onload = afficherPanier;
+       
     </script>
     <div>
         <input class="bouton_payer" type="button" id="payer_commande" value="Payer">
+        <input class="vider_panier" type="button" value ="Vider le panier">
     </div>
+    <script>
+        // Déclarer les références aux éléments de la fenêtre pop-up
+        var overlay = document.getElementById('overlay');
+        var popup = document.getElementById('popup');
+        var confirmBtn = document.getElementById('confirm-btn');
+        var cancelBtn = document.getElementById('cancel-btn');
+
+        // Écouteur d'événements pour le bouton "Vider le panier"
+        document.querySelector(".vider_panier").addEventListener("click", function() {
+            // Afficher la fenêtre pop-up
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+        });
+
+        // Écouteur d'événements pour le bouton "Oui" de la fenêtre pop-up
+        confirmBtn.addEventListener('click', function() {
+            // Réinitialiser la variable de quantité de réglisse à zéro dans le stockage local
+            localStorage.setItem("Quantite_Reglisse", 0);
+            // Réafficher le panier
+            afficherPanier();
+            // Masquer la fenêtre pop-up
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+        });
+
+        // Écouteur d'événements pour le bouton "Non" de la fenêtre pop-up
+        cancelBtn.addEventListener('click', function() {
+            // Masquer la fenêtre pop-up
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+        });
+    </script>
     <style>
+        #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+#popup-content {
+    text-align: center;
+}
+
+#popup-buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+button.green-btn {
+    background-color: green;
+    color: white;
+}
+
+button.red-btn {
+    background-color: red;
+    color: white;
+}
+    .vider_panier{
+        width: 45%;
+        background-color: maroon;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0 8px 2%;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: left;
+    }
+    .vider_panier:hover {
+        background-color: firebrick;
+        font-weight : bold;
+    }
     .bouton_payer {
         width: 45%;
         background-color: pink;
@@ -101,6 +206,7 @@
             // Rediriger vers la page payement.html
             window.location.href = 'payment.html';
         });
+        
     </script>
 <footer>
     <p>&copy; 2024 Candy Bar. Tous droits réservés.</p>
