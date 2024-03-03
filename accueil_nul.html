@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Style/materialize.css">
-    <link rel="stylesheet" href="../Style/Candy_Bar.css">
+    <link rel="stylesheet" href="../Style/Candy_Bar_nul.css">
     <title>Candy Bar - Accueil</title>
     <style>
         .banner {
@@ -34,7 +34,7 @@
         }
         .confirmer {
             display: inline-block;
-            color: green;
+            font-family: 'Brush Script MT', cursive;
             text-align: center;
             width: 45%;
             padding: 14px 20px;
@@ -58,8 +58,6 @@
         <h1 class="brand-logo">Candy Bar</h1>
         <p>Le paradis des gourmands</p>
         <nav class="nav-wrapper pink lighten-2">
-            <a href="accueil_nul.html" class="hoverable">Accueil</a>
-            <a href="#" class="hoverable">À propos de nous</a>
             <a href="cart_nul.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
         </nav>
     </header>
@@ -68,8 +66,8 @@
             <img src="../Images/CandyShop_nobg.png" alt="Candy Bar">
         </div>
         <div class="welcome-text">
-            <h1 class="pink-text">Bienvenue au Candy Bar</h1>
-            <p class="grey-text text-darken-2">Découvrez notre sélection exquise de bonbons, chocolats, et sucreries pour satisfaire vos envies de gourmandises. Que ce soit pour une occasion spéciale ou simplement pour vous faire plaisir, notre Candy Bar a tout ce qu'il vous faut!</p>
+            <p>Welcome to Candy Bar</p>
+            <h1 style="font-family: 'Brush Script MT', cursive;" class="pink-text">Discover our exquisite selection of candies, chocolates, and sweets to satisfy your cravings for indulgence. Whether it's for a special occasion or simply to treat yourself, our Candy Bar has everything you need!</h1>
         </div>
         <div class="pink-text" id="confirmation-message" style="display: none;">Commande passée, merci!</div>
         <div class="OK_commande" id="confirmationMessage"></div>
@@ -108,50 +106,61 @@
         
         <table >
             <tr>
-                <td class="card center hoverable">
+                <td class="card center">
                     <div class="waves-effect">
-                        <img src="../Images/bonbon_berlingo.jpg" alt="Image 1">
-                        <p id="Dragees" class="grey-text text-darken-2">Dragées colorées</p>
-                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
-                        <input type="number" id="Quantite_Dragees" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Ajouter au panier">
+                        <p id="Dragees" class="grey-text text-darken-2" style="font-family: 'Brush Script MT', cursive;">Colorful dragées are a delightful confection that captivates the senses with their vibrant hues and irresistible sweetness. These small, glossy candies are characterized by their smooth, sugar-coated exterior, creating a dazzling array of colors that immediately catch the eye. Each dragée encapsulates a tiny treasure within, making it a miniature burst of flavor that surprises and delights with every bite.
+                            The thin sugar shell provides a satisfying crunch, giving way to a luscious, flavorful core that can vary from chocolate to nut or fruit centers. The diversity of flavors ensures a rich and multi-dimensional tasting experience, making these confections a favorite among candy enthusiasts of all ages.
+                            Whether used as a decorative touch for special occasions, such as weddings, birthdays, or festive gatherings, or simply enjoyed as a sweet indulgence, colorful dragées bring a sense of joy and playfulness to any culinary affair. Their dainty size and dazzling appearance make them not only a treat for the taste buds but also an aesthetically pleasing addition to candy dishes and dessert tables.
+                            The versatility of colorful dragées extends beyond mere consumption; they often find their way into creative culinary endeavors, adding a pop of color and a burst of flavor to cakes, cookies, and other baked goods. With their enchanting appearance and delightful taste, these tiny treasures have become a timeless classic in the world of confectionery, offering a sweet escape into a world of sensory pleasure.</p>
+                        <p class="grey-text text-darken-2"> Order</p>
+                        <input type="number" id="Quantite_Dragees" min="0" max="1" style="font-family: 'Brush Script MT', cursive;" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Add to the basket">
                         <br>
-                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)" style="font-family: 'Brush Script MT', cursive;">Direct order</a>
                     </div>
                 </td>
-                <td class="card center hoverable">
+                <td class="card center">
                     <div class="waves-effect">
-                        <img src="../Images/bonbon_haribo_baton.jpeg" alt="Image 2">
-                        <p id="Reglisse" class="grey-text text-darken-2">Réglisse KiPik</p>
-                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
-                        <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Ajouter au panier">
+                        <p id="Reglisse" class="grey-text text-darken-2" style="font-family: 'Brush Script MT', cursive;">Kipik Licorice presents a unique and enticing treat that engages the senses with its bold flavor and distinctive texture. These licorice bites, known for their quirky shape and intense taste, offer a one-of-a-kind experience for licorice enthusiasts.
+                            Each Kipik Licorice bite is characterized by its playful and spiky form, reminiscent of a hedgehog quill. The dark, glossy exterior hints at the intense licorice flavor that lies within. The bite-sized pieces are not only visually interesting but also provide a satisfying chewiness that adds to the overall enjoyment of the confection.
+                            The rich and robust taste of licorice takes center stage, offering a deep and slightly sweet profile that sets Kipik Licorice apart from other candies. The complexity of the flavor unfolds with each chew, creating a sensory journey that is both bold and satisfying. The unique texture and taste make Kipik Licorice a favorite among those who appreciate the distinct character of licorice-flavored treats.
+                            Beyond being a delightful standalone snack, Kipik Licorice can also be incorporated into creative culinary endeavors. Whether used as a playful topping for desserts or integrated into recipes for a burst of flavor, these licorice bites add a touch of whimsy to the culinary world.
+                            With its striking appearance and intense licorice flavor, Kipik Licorice stands out as a bold and memorable treat, offering a delightful escape into the world of unique and flavorful confections.</p>
+                        <p class="grey-text text-darken-2"> Order</p>
+                        <input type="number" id="Quantite_Reglisse" min="0" max="1" style="font-family: 'Brush Script MT', cursive;" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Add to the basket">
                         <br>
-                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)" style="font-family: 'Brush Script MT', cursive;">Direct order</a>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="card center hoverable">
+                <td class="card center">
                     <div class="waves-effect">
-                        <img src="../Images/bonbon_haribo_dragibus.jpg" alt="Image 3">
-                        <p id="Dragibus" class="grey-text text-darken-2">Dragibus</p>
-                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g)</p>
-                        <input type="number" id="Quantite_Dragibus" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Ajouter au panier">
+                        <p id="Dragibus" class="grey-text text-darken-2" style="font-family: 'Brush Script MT', cursive;">Dragibus candies are a whimsical and colorful confection that enchants taste buds with their vibrant appearance and diverse flavors. These small, chewy delights are renowned for their eye-catching, glossy coating that comes in an assortment of vivid colors, creating a visual spectacle that immediately sparks joy.
+                            The exterior of each Dragibus is smooth and slightly firm, providing a satisfying initial resistance that yields to a soft and chewy center. The brilliance of the candy's colors is not just for show; each hue represents a different flavor, ranging from fruity and tangy to sweet and subtly sour. The variety of flavors within a single pack ensures an exciting and unpredictable tasting experience with every piece.
+                            Dragibus candies are a delightful treat for all ages and occasions, adding a playful touch to celebrations, parties, or simply as a sweet indulgence. Their small, bite-sized nature makes them easy to share and enjoy in moderation, allowing for a guilt-free burst of flavor whenever the craving strikes.
+                            The versatility of Dragibus extends beyond mere snacking, as these candies can be creatively used in decorative ways. From adorning cakes and cupcakes to adding a pop of color to candy buffets, Dragibus candies contribute a visually appealing and flavorful element to various culinary creations.
+                            In essence, Dragibus candies are more than just a confection; they are a celebration of colors, flavors, and the joy that comes with indulging in a delightful treat. With their charming appearance and diverse taste profile, Dragibus candies have become a beloved classic in the world of confectionery, offering a delightful escape into a realm of sweetness and color.</p>
+                        <p class="grey-text text-darken-2"> Order</p>
+                        <input type="number" id="Quantite_Dragibus" min="0" max="1" style="font-family: 'Brush Script MT', cursive;" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Add to the basket">
                         <br>
-                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)" style="font-family: 'Brush Script MT', cursive;">Direct order</a>
                     </div>
                 </td>
-                <td class="card center hoverable">
+                <td class="card center">
                     <div class="waves-effect">
-                        <img src="../Images/bonbon_haribo_ovale.png" alt="Image 4">
-                        <p id="Rings" class="grey-text text-darken-2">Rings KiPik</p>
-                        <p class="grey-text text-darken-2"> Commander (par sachet de 100g):</p>
-                        <input type="number" id="Quantite_Rings" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerRings" class="confirmer" value="Ajouter au panier">
+                        <p id="Rings" class="grey-text text-darken-2" style="font-family: 'Brush Script MT', cursive;">Rings KiPik are a playful and enticing confection that combines the joy of gummy candies with a unique and visually appealing ring shape. These delightful treats are characterized by their vibrant colors, distinct ring structure, and a burst of fruity flavors that make them a favorite among candy enthusiasts.
+                            The rings are crafted with a chewy and slightly elastic texture, creating a satisfying sensation as you bite into the playful circular shape. Each piece is adorned with a glossy coating, adding a touch of sweetness to the initial chew before revealing the fruity explosion within. The variety of colors corresponds to an array of flavors, ranging from zesty citrus to sweet berry, providing a delightful and diverse tasting experience.
+                            The whimsical design of Rings KiPik adds a layer of fun to any occasion, making them a popular choice for parties, celebrations, or as a sweet pick-me-up. The individual rings are not only visually appealing but also offer a convenient and shareable format, perfect for enjoying with friends or family.
+                            Beyond being a delightful standalone snack, Rings KiPik can be creatively incorporated into desserts, adding a playful and colorful element to cakes, cupcakes, and other treats. Their versatility makes them a charming addition to candy buffets and dessert tables, enhancing the overall aesthetic of sweet spreads.
+                            In essence, Rings KiPik are more than just gummy candies; they are a celebration of vibrant colors, playful shapes, and fruity flavors. With their irresistible charm and delightful taste, Rings KiPik bring a sense of joy and whimsy to the world of confectionery, offering a delicious escape into a realm of sweetness and fun.</p>
+                        <p class="grey-text text-darken-2"> Order</p>
+                        <input type="number" id="Quantite_Rings" min="0" max="1" style="font-family: 'Brush Script MT', cursive;" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerRings" class="confirmer" value="Add to the basket">
                         <br>
-                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)"> Commander directement</a>
+                        <a href="payment_nul.html" id="order_now" onclick="commanderDirectement(event)" style="font-family: 'Brush Script MT', cursive;">Direct order</a>
                     </div>
                 </td>
             </tr>

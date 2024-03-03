@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    position: relative;
+    margin-top: 250px;
+}
+header {
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+header h1 {
+    font-weight: bold;
+}
+h1 {
+    font-size: 36px;
+}
+
+nav {
+    text-align: center;
+}
+nav a {
+    text-decoration: none;
+    padding: 1px 30px;
+}
+
+p{
+    font-family: 'Brush Script MT', cursive;
+}
+
+.nav-wrapper a:hover {
+    background-color: #d81b60;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 0px;
+    width: 100%;
+}
