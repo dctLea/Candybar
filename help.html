@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/materialize.css">
+    <link rel="stylesheet" href="../Style/Candy_Bar.css">
+    <title>Candy Bar - Accueil</title>
+    <style>
+           /* Ajout de styles pour la transition */
+.answer {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.answer.visible {
+  display: block;
+  max-height: 500px;
+}
+
+/* Style pour la liste de questions (FAQ) */
+.faq-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style pour chaque élément de la liste (chaque question) */
+.faq-list li {
+  margin: 10px 0;
+}
+
+/* Style pour la carte (card) qui contient chaque question */
+.card {
+  display: block;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Style pour la couleur du texte des questions */
+.card a {
+  color: #333;
+  text-decoration: none;
+  font-size: large;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Style pour la couleur du texte des questions au survol */
+.card a:hover {
+  color: #f06292; /* Couleur au choix */
+}
+
+/* Style pour la bordure inférieure de chaque carte */
+.card::after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid #e91e63; /* Couleur de la bordure au choix */
+  margin-top: 10px;
+}
+
+/* Style pour le contenu de la carte (réponse à la question) */
+.answer {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+/* Style pour la transition de la bordure inférieure au survol */
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+ 
+    </style>
+</head>
+<body>
+    <header class="pink">
+        <h1 class="brand-logo">Candy Bar</h1>
+        <p>The paradise for gourmets</p>
+        <nav class="nav-wrapper pink lighten-2">
+            <a href="accueil.html" class="hoverable">Home</a>
+            <a href="help.html" class="hoverable">Help</a>
+            <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
+        </nav>
+    </header>
+
+        <!-- Content -->
+        <div class="container">
+            <h4 class="pink-text">Frequently asked questions</h4>
+            <ul class="faq-list">
+                <li class="card">
+                    <a href="javascript:void(0)" data-target="register">How to make an order using the basket?</a>
+                    <div id="register" class="answer">
+                        <p>1. Select the desired quantity of items for each product.<br>
+                            2. Click on "Add to the basket".<br>
+                            3. Go to the cart using the icon in the navigation bar.<br>
+                            4. Confirm the cart.<br>
+                            5. Provide the requested information.<br>
+                            6. Confirm the order.</p>
+                    </div>
+                </li>
+                <li class="card">
+                    <a href="javascript:void(0)" data-target="infoIncluded">How to make a direct order?</a>
+                    <div id="infoIncluded" class="answer">
+                        <p>1. Select the desired quantity of items for each product.<br>
+                            2. Click on "Order directly".<br>
+                            3. Provide the requested information.<br>
+                            4. Confirm the order.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <br>
+
+    <footer>
+        <p>&copy; 2024 Candy Bar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        var faqLinks = document.querySelectorAll('.faq-list a');
+        faqLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                var target = this.getAttribute('data-target');
+                var answer = document.getElementById(target);
+    
+                // Ajout/Suppression de la classe 'visible' pour montrer ou cacher la réponse
+                if (answer.classList.contains('visible')) {
+                    answer.classList.remove('visible');
+                } else {
+                    // Fermer toutes les autres réponses avant d'ouvrir la nouvelle
+                    document.querySelectorAll('.answer').forEach(function (otherAnswer) {
+                        if (otherAnswer !== answer && otherAnswer.classList.contains('visible')) {
+                            otherAnswer.classList.remove('visible');
+                        }
+                    });
+    
+                    answer.classList.add('visible');
+                }
+            });
+        });
+        });
+    </script>
+    
+</body>
+</html>
