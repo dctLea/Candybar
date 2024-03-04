@@ -43,9 +43,11 @@
             <a href="cart_nul.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
         </nav>
     </header>
-    <p class="pink-text">Your basket</p>
-    <div id="cartItems">
-        <!-- Les éléments confirmés seront affichés ici -->
+    <div class="container">
+        <p class="pink-text">Your basket</p>
+        <div id="cartItems">
+            <!-- Les éléments confirmés seront affichés ici -->
+        </div>
     </div>
     <div id="overlay"></div>
 <div id="popup">
@@ -77,6 +79,7 @@
             // Afficher les éléments dans le panier
             cartItemsDiv.innerHTML = cartHTML;
         }
+
 
         // Appeler la fonction pour afficher le panier lorsque la page est chargée
         window.onload = afficherPanier;
@@ -199,7 +202,7 @@ button.red-btn {
         
     </script>
 <footer>
-    <p>&copy; 2024 Candy Bar. All rights reserved.</p>
+    <br><br><p>&copy; 2024 Candy Bar. All rights reserved.</p>
 </footer>
 </body>
 </html>
