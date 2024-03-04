@@ -36,18 +36,20 @@
             display: inline-block;
             color: green;
             text-align: center;
-            width: 45%;
+            width: auto; /* Modifier la largeur en 'auto' */
             padding: 14px 20px;
             margin: 8px 2%;
-            border: none;                     
-            border-radius: 4px;                    
-            cursor: pointer;                    
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
             font-size: 16px;
-            transition: 0.3s ease;                                                           
+            transition: 0.3s ease;
         }
+
         .confirmer:hover {
             background-color: #4cb828;
-         }
+        }
+
                                 
                             
                         
@@ -71,7 +73,7 @@
             <h1 class="pink-text">Welcome to Candy Bar</h1>
             <p class="grey-text text-darken-2">Discover our exquisite selection of candies, chocolates, and sweets to satisfy your cravings for indulgence. Whether it's for a special occasion or simply to treat yourself, our Candy Bar has everything you need!</p>
         </div>
-        <div class="pink-text" id="confirmation-message" style="display: none;">Commande passée, merci!</div>
+        <div class="pink-text" id="confirmation-message" style="display: none;">Your order has been successfully placed. Thank you for your trust!</div>
         <div class="OK_commande" id="confirmationMessage"></div>
         <style>
             .OK_commande {
@@ -113,8 +115,8 @@
                         <img src="../Images/bonbon_berlingo.jpg" alt="Image 1">
                         <h5 id="Dragees" class="grey-text text-darken-2">Dragées colorées</h5>
                         <p class="grey-text text-darken-2">Order (per 100g bag)</p>
-                        <input type="number" id="Quantite_Dragees" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Ajouter au panier">
+                        <input type="number" id="Quantite_Dragees" min="0" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
                     </div>
@@ -124,8 +126,8 @@
                         <img src="../Images/bonbon_haribo_baton.jpeg" alt="Image 2">
                         <h5 id="Reglisse" class="grey-text text-darken-2">Réglisse KiPik</h5>
                         <p class="grey-text text-darken-2">Order (per 100g bag)</p>
-                        <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Ajouter au panier">
+                        <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
                     </div>
@@ -137,8 +139,8 @@
                         <img src="../Images/bonbon_haribo_dragibus.jpg" alt="Image 3">
                         <h5 id="Dragibus" class="grey-text text-darken-2">Dragibus</h5>
                         <p class="grey-text text-darken-2">Order (per 100g bag)</p>
-                        <input type="number" id="Quantite_Dragibus" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Ajouter au panier">
+                        <input type="number" id="Quantite_Dragibus" min="0" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
                     </div>
@@ -148,8 +150,8 @@
                         <img src="../Images/bonbon_haribo_ovale.png" alt="Image 4">
                         <h5 id="Rings" class="grey-text text-darken-2">Rings KiPik</h5>
                         <p class="grey-text text-darken-2">Order (per 100g bag)</p>
-                        <input type="number" id="Quantite_Rings" min="0" placeholder="Quantité">
-                        <input type="button" id="boutonConfirmerRings" class="confirmer" value="Ajouter au panier">
+                        <input type="number" id="Quantite_Rings" min="0" placeholder="Quantity">
+                        <input type="button" id="boutonConfirmerRings" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
                     </div>
@@ -168,7 +170,7 @@
 
                         localStorage.setItem("Quantite_Reglisse", valeurInput);
                         // Afficher la fenêtre pop-up de confirmation
-                        afficherPopup("Êtes-vous sûr de vouloir commander directement " + valeurInput + " sachets de 100g de " + idBonbon + " ?\n Si oui, vous serez redirigé vers la page de paiement.");
+                        afficherPopup("Are you sure you want to order " + valeurInput + " bags of 100g of " + idBonbon + "?\n If yes, you will be redirected to the payment page.");
                         var confirmBtn = document.getElementById('confirm-btn');
                             var cancelBtn = document.getElementById('cancel-btn');
 
@@ -182,12 +184,12 @@
                             // Écouter l'événement clic du bouton "Annuler" de la pop-up
                             cancelBtn.addEventListener('click', function() {
                                 // Code à exécuter lorsque l'utilisateur clique sur le bouton "Annuler" de la pop-up
-                                alert("La commande a été annulée.");
+                                alert("The order has been cancelled.");
                                 masquerPopup();
                             });
                     }else {
                             // Si la valeur est égale à zéro
-                            var messageErreur = "⚠WARNING⚠ Vous essayez de commander 0 bonbons!\n Merci d'indiquer une quantité minimale de 1 sachet avant d'ajouter au panier!";
+                            var messageErreur = "⚠ WARNING ⚠ You are trying to order directly 0 candies!\n Please specify a minimum quantity of 1 bag before adding to the basket!";
                             alert(messageErreur);
                         }
                 }
@@ -216,7 +218,7 @@
                     confirmBtn.addEventListener('click', function() {
                         // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
                         localStorage.setItem("Quantite_Reglisse", valeurInput);
-                        alert("Quantité enregistrée dans le panier!");
+                        alert("Quantity saved in the basket!");
                         masquerPopup();
                     });
 
@@ -243,7 +245,7 @@
                             // Récupérer l'ID du bonbon
                             var idBonbon = document.getElementById('Reglisse').textContent.trim();
                             // Construire le message de confirmation
-                            afficherPopup("Êtes-vous sûr de vouloir commander " + valeurInput + " sachets de 100g de " + idBonbon + " ?");
+                            afficherPopup("Are you sure you want to order " + valeurInput + " bags of 100g of " + idBonbon + "?");
                             // Déclarer la variable confirmation
                         // Déclarer les références aux boutons de la fenêtre pop-up
                             var confirmBtn = document.getElementById('confirm-btn');
@@ -253,19 +255,19 @@
                             confirmBtn.addEventListener('click', function() {
                                 // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
                                 localStorage.setItem("Quantite_Reglisse", valeurInput);
-                                alert("Quantité enregistrée dans le panier!");
+                                alert("Quantity saved in the basket!");
                                 masquerPopup();
                             });
 
                             // Écouter l'événement clic du bouton "Annuler" de la pop-up
                             cancelBtn.addEventListener('click', function() {
                                 // Code à exécuter lorsque l'utilisateur clique sur le bouton "Annuler" de la pop-up
-                                alert("La commande a été annulée.");
+                                alert("The order has been cancelled.");
                                 masquerPopup();
                             });
                         } else {
                             // Si la valeur est égale à zéro
-                            var messageErreur = "⚠WARNING⚠ Vous essayez de commander 0 bonbons!\n Merci d'indiquer une quantité minimale de 1 sachet avant d'ajouter au panier!";
+                            var errorMessage = "⚠ WARNING ⚠ You are trying to order 0 candies!\n Please specify a minimum quantity of 1 bag before adding to the basket!";
                             alert(messageErreur);
                         }
                     }
@@ -320,6 +322,9 @@
                 cursor: pointer; /* Curseur pointeur */
                 border-radius: 5px; /* Coins arrondis */
             }
+            #confirm-btn:hover{
+                background-color: rgb(0, 112, 0);
+            }
 
             /* CSS pour styliser le bouton "Annuler" */
             #cancel-btn {
@@ -330,15 +335,19 @@
                 cursor: pointer; /* Curseur pointeur */
                 border-radius: 5px; /* Coins arrondis */
             }
+
+            #cancel-btn:hover{
+                background-color: rgb(197, 0, 0);
+            }
         </style>
             <div id="overlay"></div>
             <div id="popup">
                 <div id="popup-content">
-                    <h3>Confirmation d'ajout dans le panier</h3>
+                    <h3>Shopping Cart Addition Confirmation</h3>
                     <p id="popup-message"></p>
                     <div id="popup-buttons">
-                        <button id="confirm-btn">Confirmer</button>
-                        <button id="cancel-btn">Annuler</button>
+                        <button id="confirm-btn">Confirm</button>
+                        <button id="cancel-btn">Cancel</button>
                     </div>
                 </div>
             </div>
