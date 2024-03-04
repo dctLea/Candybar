@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/materialize.css">
+    <link rel="stylesheet" href="../Style/Candy_Bar.css">
+    <title>Candy Bar - Accueil</title>
+    <style>
+        .confirmer {
+            background-image: url('../Images/CART.png');
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #f8bbd0;
+            width: 40px;
+            height: 40px;
+            color: transparent;
+            cursor: pointer;
+            border: 1px solid black;
+        }                 
+    </style>
+</head>
+<body>
+    <header class="pink">
+        <h1 class="brand-logo">Candy Bar</h1>
+        <p>The paradise for gourmets</p>
+        <nav class="nav-wrapper pink lighten-2">
+            <a href="accueil.html" class="hoverable">Home</a>
+            <a href="help.html" class="hoverable">Help</a>
+            <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
+        </nav>
+    </header>
+    <div class="container">
+        <table style="width: 20%;;">
+            <tr style="border: none;">
+                <td style="align-items: center;">
+                    <a href="./dragee_page.html"><img src="../Images/arrow.png" width="40px" height="40px" ></a>
+                </td>
+                <td style="align-items: center;">
+                    <a href="./accueil.html"><img src="../Images/house.png" width="25px" height="25px"></a>
+                </td>
+            </tr>
+        </table>
+        <h4 id="Reglisse" class="pink-text">Réglisse KiPik</h4>
+        <table>
+            <tr>
+                <td>
+                    <img src="../Images/bonbon_haribo_baton.jpeg" width="70%" alt="Image 2">
+                </td>
+                <td width="250vw">
+                    <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantity">
+                    <table>
+                        <tr style="border: none;">
+                            <td>
+                                <p>Add to the basket: </p>
+                            </td>
+                            <td>
+                                <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <a href="payment.html" id="order_now" onclick="commanderDirectement(event)" style="color: black; border: 1px solid black; background-color: #f8bbd0; padding: 7px;">Order directly</a>
+                </td>                
+            </tr>
+        </table>
+        <h5 class="grey-text text-darken-1">Description</h5>
+        <p id="Reglisse" class="grey-text text-darken-2" style="text-align: justify;">Kipik Licorice presents a unique and enticing treat that engages the senses with its bold flavor and distinctive texture. These licorice bites, known for their quirky shape and intense taste, offer a one-of-a-kind experience for licorice enthusiasts.<br><br>
+            Each Kipik Licorice bite is characterized by its playful and spiky form, reminiscent of a hedgehog quill. The dark, glossy exterior hints at the intense licorice flavor that lies within. The bite-sized pieces are not only visually interesting but also provide a satisfying chewiness that adds to the overall enjoyment of the confection.<br><br>
+            The rich and robust taste of licorice takes center stage, offering a deep and slightly sweet profile that sets Kipik Licorice apart from other candies. The complexity of the flavor unfolds with each chew, creating a sensory journey that is both bold and satisfying. The unique texture and taste make Kipik Licorice a favorite among those who appreciate the distinct character of licorice-flavored treats.<br><br>
+            Beyond being a delightful standalone snack, Kipik Licorice can also be incorporated into creative culinary endeavors. Whether used as a playful topping for desserts or integrated into recipes for a burst of flavor, these licorice bites add a touch of whimsy to the culinary world.<br><br>
+            With its striking appearance and intense licorice flavor, Kipik Licorice stands out as a bold and memorable treat, offering a delightful escape into the world of unique and flavorful confections.</p>
+    </div>
+
+    <script>
+        var valeurInput; // Déclarer la variable en dehors des fonctions
+
+        function commanderDirectement(event) {
+            event.preventDefault();
+
+            valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
+
+            if (valeurInput !== 0 && !isNaN(valeurInput) && valeurInput !== "") {
+                var idBonbon = document.getElementById('Reglisse').textContent.trim();
+
+                localStorage.setItem("Quantite_Reglisse", valeurInput);
+                afficherPopup("Are you sure you want to order " + valeurInput + " bags of 100g of " + idBonbon + "?\n If yes, you will be redirected to the payment page.");
+
+                var confirmBtn = document.getElementById('confirm-btn');
+                var cancelBtn = document.getElementById('cancel-btn');
+
+                confirmBtn.addEventListener('click', function() {
+                    window.location.href = 'payment.html';
+                    masquerPopup();
+                });
+
+                cancelBtn.addEventListener('click', function() {
+                    alert("The order has been cancelled.");
+                    masquerPopup();
+                });
+            } else {
+                var messageErreur = "⚠ WARNING ⚠ You are trying to order directly 0 candies!\n Please specify a minimum quantity of 1 bag before adding to the basket!";
+                alert(messageErreur);
+            }
+        }
+
+        document.getElementById("order_now").addEventListener("click", commanderDirectement);
+        // Fonction pour afficher la fenêtre pop-up avec un message personnalisé
+        function afficherPopup(message) {
+            // Récupérer les éléments de la pop-up
+            var overlay = document.getElementById('overlay');
+            var popup = document.getElementById('popup');
+            var messageContainer = document.getElementById('popup-message');
+
+            // Afficher la pop-up
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+
+            // Afficher le message dans la pop-up
+            messageContainer.textContent = message;
+
+            // Ajouter le bouton "Confirmer" uniquement pour les commandes directes
+            var confirmBtn = document.getElementById('confirm-btn');
+            confirmBtn.style.display = 'block-inline';
+
+            // Ajouter l'écouteur d'événements pour le bouton "Confirmer"
+            confirmBtn.addEventListener('click', function() {
+                // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
+                localStorage.setItem("Quantite_Reglisse", valeurInput);
+                alert("Quantity saved in the basket!");
+                masquerPopup();
+            });
+
+            // Cacher le bouton "Annuler" pour les commandes directes
+            var cancelBtn = document.getElementById('cancel-btn');
+            cancelBtn.style.display = 'block-inline';
+        }
+
+        // Fonction pour masquer la fenêtre pop-up
+        function masquerPopup() {
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+        }
+
+
+        var Confirmation_Quantite_Reglisse_Input = document.getElementById('boutonConfirmerReglisse');
+        Confirmation_Quantite_Reglisse_Input.addEventListener('click', function(event) {
+            // Vérifier si le clic est bien effectué sur le bouton "Confirmer"
+            if (event.target.id === 'boutonConfirmerReglisse') {
+                // Récupérer la valeur de l'input
+                var valeurInput = parseInt(document.getElementById('Quantite_Reglisse').value);
+                // Vérifier si la valeur n'est pas égale à zéro
+                if (valeurInput !== 0 && !isNaN(valeurInput) && valeurInput !== "") {
+                    // Récupérer l'ID du bonbon
+                    var idBonbon = document.getElementById('Reglisse').textContent.trim();
+                    // Construire le message de confirmation
+                    afficherPopup("Are you sure you want to order " + valeurInput + " bags of 100g of " + idBonbon + "?");
+                    // Déclarer la variable confirmation
+                // Déclarer les références aux boutons de la fenêtre pop-up
+                    var confirmBtn = document.getElementById('confirm-btn');
+                    var cancelBtn = document.getElementById('cancel-btn');
+
+                    // Écouter l'événement clic du bouton "Confirmer" de la pop-up
+                    confirmBtn.addEventListener('click', function() {
+                        // Code à exécuter lorsque l'utilisateur clique sur le bouton "Confirmer" de la pop-up
+                        localStorage.setItem("Quantite_Reglisse", valeurInput);
+                        alert("Quantity saved in the basket!");
+                        masquerPopup();
+                    });
+
+                    // Écouter l'événement clic du bouton "Annuler" de la pop-up
+                    cancelBtn.addEventListener('click', function() {
+                        // Code à exécuter lorsque l'utilisateur clique sur le bouton "Annuler" de la pop-up
+                        alert("The order has been cancelled.");
+                        masquerPopup();
+                    });
+                } else {
+                    // Si la valeur est égale à zéro
+                    var messageErreur = "⚠ WARNING ⚠ You are trying to order 0 candies!\n Please specify a minimum quantity of 1 bag before adding to the basket!";
+                    alert(messageErreur);
+                }
+            }
+        });
+    </script>
+
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+
+    #popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        display: none;
+    }
+
+    #popup-content {
+        text-align: center;
+    }
+
+    #popup-buttons {
+        margin-top: 20px;
+    }
+
+    #confirm-btn {
+        background-color: green; /* Couleur de fond verte */
+        color: white; /* Texte blanc */
+        border: none; /* Suppression de la bordure */
+        padding: 10px 20px; /* Marge intérieure */
+        cursor: pointer; /* Curseur pointeur */
+        border-radius: 5px; /* Coins arrondis */
+    }
+    #confirm-btn:hover{
+        background-color: rgb(0, 112, 0);
+    }
+
+    /* CSS pour styliser le bouton "Annuler" */
+    #cancel-btn {
+        background-color: red; /* Couleur de fond rouge */
+        color: white; /* Texte blanc */
+        border: none; /* Suppression de la bordure */
+        padding: 10px 20px; /* Marge intérieure */
+        cursor: pointer; /* Curseur pointeur */
+        border-radius: 5px; /* Coins arrondis */
+    }
+
+    #cancel-btn:hover{
+        background-color: rgb(197, 0, 0);
+    }
+</style>
+    <div id="overlay"></div>
+    <div id="popup">
+        <div id="popup-content">
+            <h3>Shopping Cart Addition Confirmation</h3>
+            <p id="popup-message"></p>
+            <div id="popup-buttons">
+                <button id="confirm-btn">Confirm</button>
+                <button id="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+        
+    <footer>
+        <p>&copy; 2024 Candy Bar. All rights reserved.</p>
+    </footer>
+</body>
+</html>

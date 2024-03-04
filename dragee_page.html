@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/materialize.css">
+    <link rel="stylesheet" href="../Style/Candy_Bar.css">
+    <title>Candy Bar - Accueil</title>
+    <style>
+        .confirmer {
+            background-image: url('../Images/CART.png');
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #f8bbd0;
+            width: 40px;
+            height: 40px;
+            color: transparent;
+            cursor: pointer;
+            border: 1px solid black;
+        }                 
+    </style>
+</head>
+<body>
+    <header class="pink">
+        <h1 class="brand-logo">Candy Bar</h1>
+        <p>The paradise for gourmets</p>
+        <nav class="nav-wrapper pink lighten-2">
+            <a href="accueil.html" class="hoverable">Home</a>
+            <a href="help.html" class="hoverable">Help</a>
+            <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
+        </nav>
+    </header>
+    <div class="container">
+        <h4 id="Reglisse" class="pink-text">Dragées colorées</h4>
+        <table>
+            <tr>
+                <td>
+                    <img src="../Images/bonbon_haribo_baton.jpeg" width="70%" alt="Image 2">
+                </td>
+                <td width="250vw">
+                    <input type="number" id="Quantite_Reglisse" min="0" placeholder="Quantity">
+                    <table>
+                        <tr style="border: none;">
+                            <td>
+                                <p>Add to the basket: </p>
+                            </td>
+                            <td>
+                                <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <a href="payment.html" id="order_now" onclick="commanderDirectement(event)" style="color: black; border: 1px solid black; background-color: #f8bbd0; padding: 7px;">Order directly</a>
+                </td>                
+            </tr>
+        </table>
+        <h5 class="grey-text text-darken-1">Description</h5>
+        <p id="Dragees" class="grey-text text-darken-2">Colorful dragées are a delightful confection that captivates the senses with their vibrant hues and irresistible sweetness. These small, glossy candies are characterized by their smooth, sugar-coated exterior, creating a dazzling array of colors that immediately catch the eye. Each dragée encapsulates a tiny treasure within, making it a miniature burst of flavor that surprises and delights with every bite.<br><br>
+            The thin sugar shell provides a satisfying crunch, giving way to a luscious, flavorful core that can vary from chocolate to nut or fruit centers. The diversity of flavors ensures a rich and multi-dimensional tasting experience, making these confections a favorite among candy enthusiasts of all ages.<br><br>
+            Whether used as a decorative touch for special occasions, such as weddings, birthdays, or festive gatherings, or simply enjoyed as a sweet indulgence, colorful dragées bring a sense of joy and playfulness to any culinary affair. Their dainty size and dazzling appearance make them not only a treat for the taste buds but also an aesthetically pleasing addition to candy dishes and dessert tables.<br><br>
+            The versatility of colorful dragées extends beyond mere consumption; they often find their way into creative culinary endeavors, adding a pop of color and a burst of flavor to cakes, cookies, and other baked goods. With their enchanting appearance and delightful taste, these tiny treasures have become a timeless classic in the world of confectionery, offering a sweet escape into a world of sensory pleasure.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Candy Bar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
