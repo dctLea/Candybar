@@ -22,16 +22,6 @@
         .welcome-text p {
             font-size: 18px;
         }
-        
-        table {
-            border-collapse: separate;
-            border-spacing: 3vw;
-            width: 100%;
-        }
-        td img {
-            width: 15vw;
-            height: 15vw;
-        }
                         
     </style>
 </head>
@@ -45,17 +35,19 @@
             <a href="cart.html" class="hoverable"> <img src="../Images/CART.png" width="15" height="15" > </a>
         </nav>
     </header>
-    <h1 class="pink-text">Votre panier</h1>
-    <div id="cartItems">
-        <!-- Les éléments confirmés seront affichés ici -->
+    <div class="container">
+        <h1 class="pink-text">Your basket</h1>
+        <div id="cartItems">
+            <!-- Les éléments confirmés seront affichés ici -->
+        </div>
     </div>
     <div id="overlay"></div>
 <div id="popup">
     <div id="popup-content">
-        <p>Êtes-vous sûr de vouloir vider votre panier ?</p>
+        <p>Are you sure you want to empty your basket?</p>
         <div id="popup-buttons">
-            <button id="confirm-btn" class="green-btn">Oui</button>
-            <button id="cancel-btn" class="red-btn">Non</button>
+            <button id="confirm-btn" class="green-btn">Yes</button>
+            <button id="cancel-btn" class="red-btn">No</button>
         </div>
     </div>
 </div>
@@ -71,9 +63,10 @@
 
             // Créer des éléments HTML pour afficher les quantités confirmées
             if (quantiteReglisse && quantiteReglisse !== 0) {
-                var cartHTML = "<p>Quantité de Réglisse KiPik: " + quantiteReglisse + "</p>";
+                //var cartHTML = "<p>Quantité de Réglisse KiPik: " + quantiteReglisse + "</p>";
+                var cartHTML = "<table class='centered' style='margin-bottom: 10px;'><tr style='font-weight: bold;'><td>Name</td><td>Quantity</td></tr><tr><td>Réglisse KiPik</td><td>" + quantiteReglisse + "</td></tr></table><br>";
             } else {
-                var cartHTML = "<p>Votre panier est vide.</p>";
+                var cartHTML = "<p>Your basket is empty.</p>";
             }
 
             // Afficher les éléments dans le panier
@@ -85,8 +78,8 @@
        
     </script>
     <div>
-        <input class="bouton_payer" type="button" id="payer_commande" value="Payer">
-        <input class="vider_panier" type="button" value ="Vider le panier">
+        <input class="bouton_payer" type="button" id="payer_commande" value="Pay">
+        <input class="vider_panier" type="button" value ="Empty the basket">
     </div>
     <script>
         // Déclarer les références aux éléments de la fenêtre pop-up
@@ -121,7 +114,7 @@
         });
     </script>
     <style>
-        #overlay {
+    #overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -166,6 +159,15 @@ button.red-btn {
     background-color: red;
     color: white;
 }
+
+button.green-btn:hover {
+    background-color: rgb(0, 112, 0);
+}
+
+button.red-btn:hover {
+    background-color: rgb(197, 0, 0);
+}
+
 .vider_panier{
         width: 45%;
         background-color: #e53935;
@@ -209,6 +211,7 @@ button.red-btn {
         
     </script>
 <footer>
+    <br><br>
     <p>&copy; 2024 Candy Bar. All rights reserved.</p>
 </footer>
 </body>
