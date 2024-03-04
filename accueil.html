@@ -119,6 +119,7 @@
                         <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
+                        <div id=""Dragees_stock"></div>
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -130,6 +131,7 @@
                         <input type="button" id="boutonConfirmerReglisse" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
+                        <div id=""Reglisse_stock"></div>
                     </div>
                 </td>
             </tr>
@@ -282,6 +284,35 @@
                 // var Quantite_Dragibus_Input = parseInt(ID_Dragibus.value);
                 // var Quantite_Rings_Input = parseInt(ID_Rings.value);
             </script>
+
+<script>
+    // Définir des objets pour chaque bonbon avec leur image et stock initial
+    var bonbons = [{
+            nom: "Dragées colorées",
+            stock: 20 // Exemple de stock pour le bonbon
+        },
+        {
+            nom: "Réglisse KiPik",
+            stock: 15 // Exemple de stock pour le bonbon
+        },
+        // Ajoutez d'autres bonbons avec leurs stocks ici
+    ];
+
+    // Fonction pour afficher le stock restant en dessous de la quantité
+    function afficherStockRestant() {
+        bonbons.forEach(function(bonbon) {
+            // Récupérer l'élément où afficher le stock restant
+            var stockRestantElement = document.createElement("p");
+            // Calculer le stock restant
+            var stockRestant = bonbon.stock - parseInt(localStorage.getItem("Quantite_" + bonbon.nom.replace(/\s+/g, '_')));
+            stockRestantElement.textContent = "Remaining stock: " + stockRestant;
+            document.getElementById(bonbon.nom.replace(/\s+/g, '_') + "_stock").appendChild(stockRestantElement);
+        });
+    }
+
+    // Appeler la fonction pour afficher le stock restant au chargement de la page
+    window.onload = afficherStockRestant;
+</script>
         <style>
             #overlay {
                 position: fixed;
