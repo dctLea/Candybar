@@ -176,7 +176,7 @@
 
                     localStorage.setItem("Quantite_Reglisse", valeurInput);
                     // Afficher la fenêtre pop-up de confirmation
-                    afficherPopup("Are you sure you want to order directly? You may not have ordered the right product.");
+                    afficherPopup("Are you sure you want to order directly?");
                     var confirmBtn = document.getElementById('confirm-btn');
                         var cancelBtn = document.getElementById('cancel-btn');
 
@@ -245,7 +245,7 @@
                         // Récupérer l'ID du bonbon
                         var idBonbon = document.getElementById('Reglisse').textContent.trim();
                         // Construire le message de confirmation
-                        afficherPopup("Are you sure you want to order? You may not have ordered the right product.");
+                        afficherPopup("Are you sure you want to order?");
                         // Déclarer la variable confirmation
                         // Déclarer les références aux boutons de la fenêtre pop-up
                             var confirmBtn = document.getElementById('confirm-btn');
