@@ -153,10 +153,10 @@
         </form>
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <p>Êtes-vous sûr de vouloir procéder au paiement ?</p>
+                <p>Are you sure you want to finalize your payment?</p>
                 <div class="modal-btns">
-                    <button id="confirmPayment" class="primary">Oui</button>
-                    <button id="cancelPayment" class="secondary">Annuler</button>
+                    <button id="confirmPayment" class="primary">Yes, pay.</button>
+                    <button id="cancelPayment" class="secondary">No, cancel.</button>
                 </div>
             </div>
         </div>
@@ -165,7 +165,7 @@
                 // Vérifier si le panier est vide
                 var quantiteReglisse = parseInt(localStorage.getItem("Quantite_Reglisse"));
                 if (!quantiteReglisse || quantiteReglisse === 0) {
-                    alert("Votre panier est vide! Aucun paiement à effectuer.");
+                    alert("Ypur cart is empty! No payment to do.");
                     return; // Arrêter l'exécution de la fonction si le panier est vide
                 }
                 
