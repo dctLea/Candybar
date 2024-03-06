@@ -121,7 +121,7 @@
                         <input type="button" id="boutonConfirmerDragees" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
-                        <div id="Dragees_stock"></div>
+                        <p>Remaining stock : 15</p>
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -149,7 +149,7 @@
                         <input type="button" id="boutonConfirmerDragibus" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
-                        <div id="Dragibus_stock"></div>
+                        <p>Remaining stock : 7</p>
                     </div>
                 </td>
                 <td class="card center hoverable">
@@ -161,7 +161,7 @@
                         <input type="button" id="boutonConfirmerRings" class="confirmer" value="Add to the basket">
                         <br>
                         <a href="payment.html" id="order_now" onclick="commanderDirectement(event)">Order directly</a>
-                        <div id="Haribo_ovale_stock"></div>
+                        <p>Remaining stock : 12</p>
                     </div>
                 </td>
             </tr>
@@ -265,6 +265,9 @@
                                 localStorage.setItem("Quantite_Reglisse", valeurInput);
                                 alert("Quantity saved in the basket!");
                                 masquerPopup();
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 500);
                             });
 
                             // Écouter l'événement clic du bouton "Annuler" de la pop-up
@@ -290,40 +293,26 @@
                 // var Quantite_Dragibus_Input = parseInt(ID_Dragibus.value);
                 // var Quantite_Rings_Input = parseInt(ID_Rings.value);
                 
-    // Définir des objets pour chaque bonbon avec leur image et stock initial
-            var bonbons = [{
-            nom: "Dragées colorées",
-            stock: 20 // Stock pour le bonbon
-        },
-        {
-            nom: "Réglisse KiPik",
-            stock: 15 // Stock pour le bonbon
-        },
-        {
-            nom: "Dragibus",
-            stock : 15
-        },
-        {
-            nom: "Haribo ovale",
-            stock : 20
-        }
-        // Ajoutez d'autres bonbons avec leurs stocks ici
-    ];
 
-    // Fonction pour afficher le stock restant en dessous de la quantité
-    function afficherStockRestant() {
-        bonbons.forEach(function(bonbon) {
-            // Récupérer l'élément où afficher le stock restant
-            var stockRestantElement = document.createElement("p");
-            // Calculer le stock restant
-            var stockRestant = bonbon.stock - parseInt(localStorage.getItem("Quantite_" + bonbon.nom.replace(/\s+/g, '_')));
-            stockRestantElement.textContent = "Remaining stock: " + stockRestant;
-            document.getElementById(bonbon.nom.replace(/\s+/g, '_') + "_stock").appendChild(stockRestantElement);
-        });
-    }
+                function afficherStockRestant() {
+                    // Récupérer l'élément où afficher le stock restant
+                    var stockElement = document.getElementById("Reglisse_stock");
 
-    // Appeler la fonction pour afficher le stock restant au chargement de la page
-    window.onload = afficherStockRestant;
+                    // Calculer le stock restant (par exemple, 10 - Quantite_Reglisse)
+                    var stockRestant = 10 - parseInt(localStorage.getItem("Quantite_Reglisse")) || 10;
+
+                    // Créer un élément de paragraphe pour afficher le stock restant
+                    var stockParagraph = document.createElement("p");
+                    stockParagraph.textContent = "Remaining stock: " + stockRestant;
+
+                    // Ajouter le paragraphe à l'élément où afficher le stock
+                    stockElement.innerHTML = ""; // Effacer le contenu existant
+                    stockElement.appendChild(stockParagraph);
+                }
+
+                // Appeler la fonction pour afficher le stock restant au chargement de la page
+                window.onload = afficherStockRestant;
+
 </script>
         <style>
             #overlay {
